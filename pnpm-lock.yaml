@@ -1,0 +1,40 @@
+lockfileVersion: "6.1"
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  nan:
+    specifier: ^2.17.0
+    version: registry.npmmirror.com/nan@2.17.0
+
+devDependencies:
+  tree-sitter-cli:
+    specifier: ^0.20.8
+    version: registry.npmmirror.com/tree-sitter-cli@0.20.8
+
+packages:
+  registry.npmmirror.com/nan@2.17.0:
+    resolution:
+      {
+        integrity: sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/nan/-/nan-2.17.0.tgz,
+      }
+    name: nan
+    version: 2.17.0
+    dev: false
+
+  registry.npmmirror.com/tree-sitter-cli@0.20.8:
+    resolution:
+      {
+        integrity: sha512-XjTcS3wdTy/2cc/ptMLc/WRyOLECRYcMTrSWyhZnj1oGSOWbHLTklgsgRICU3cPfb0vy+oZCC33M43u6R1HSCA==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/tree-sitter-cli/-/tree-sitter-cli-0.20.8.tgz,
+      }
+    name: tree-sitter-cli
+    version: 0.20.8
+    hasBin: true
+    requiresBuild: true
+    dev: true
