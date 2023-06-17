@@ -4,7 +4,8 @@
   "description": "",
   "main": "bindings/node",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "pnpm exec tree-sitter generate",
+    "test": "pnpm exec tree-sitter test"
   },
   "keywords": [],
   "author": "",
