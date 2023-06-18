@@ -46,6 +46,10 @@
         {
           "type": "SYMBOL",
           "name": "footnote"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "kbd"
         }
       ]
     },
@@ -254,6 +258,31 @@
             {
               "type": "PATTERN",
               "value": "[\\w._]+"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "kbd": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "kbd:["
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "\\w+(\\+\\w+)?"
             },
             {
               "type": "BLANK"

@@ -11,3 +11,4 @@ NOTE: note some thing
 image::1.url[title]
 https://www.xxx.com
 footnote:[xxxx]
+kbd:[Ctrl+K]

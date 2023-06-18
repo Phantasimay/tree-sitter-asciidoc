@@ -1,0 +1,15 @@
+====
+kbd
+====
+
+kbd:[K]
+kbd:[Ctrl+alt]
+kbd:[]
+
+----
+
+(document
+  (kbd)
+  (kbd)
+  (kbd)
+)
