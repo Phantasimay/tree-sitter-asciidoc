@@ -682,6 +682,10 @@
           "name": "replacement"
         },
         {
+          "type": "SYMBOL",
+          "name": "passthrough"
+        },
+        {
           "type": "PATTERN",
           "value": "\\w+"
         }
@@ -706,6 +710,23 @@
     "subscript": {
       "type": "PATTERN",
       "value": "~.+~"
+    },
+    "passthrough": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "pass:["
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\w+"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
     },
     "replacement": {
       "type": "CHOICE",

@@ -158,6 +158,10 @@
           "named": true
         },
         {
+          "type": "passthrough",
+          "named": true
+        },
+        {
           "type": "replacement",
           "named": true
         },
@@ -175,6 +179,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "passthrough",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "replacement",
@@ -302,6 +311,10 @@
   {
     "type": "monospace",
     "named": true
+  },
+  {
+    "type": "pass:[",
+    "named": false
   },
   {
     "type": "strong",

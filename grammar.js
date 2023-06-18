@@ -99,6 +99,7 @@ module.exports = grammar({
                 $.superscript,
                 $.subscript,
                 $.replacement,
+                $.passthrough,
                 /\w+/
             ),
         emphasis: $ => /_.+_/,
@@ -106,6 +107,7 @@ module.exports = grammar({
         monospace: $ => /`.+`/,
         superscript: $ => /\^.+\^/,
         subscript: $ => /~.+~/,
+        passthrough: $ => seq('pass:[', /\w+/, ']'),
         replacement: $ =>
             choice(
                 $._blank,

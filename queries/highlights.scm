@@ -21,3 +21,4 @@
 (footnote) @text.footnote
 (monospace) @text.monospace
 (replacement) @text.replacement
+(passthrough) @text.passthrough

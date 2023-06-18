@@ -1,0 +1,13 @@
+==============
+passthrough
+==============
+
+pass:[pass]
+
+---
+
+(document
+  (paragraph
+    (passthrough)
+  )
+)
