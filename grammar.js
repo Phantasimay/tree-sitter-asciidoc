@@ -6,10 +6,9 @@ module.exports = grammar({
         _block: $ =>
             choice(
                 $.title,
-                $.note,
+                $._admonitions,
                 $.list,
                 $.code,
-                $.note,
                 $.comment,
                 $.image,
                 $.url,
@@ -22,7 +21,13 @@ module.exports = grammar({
                 $.video
             ),
         title: $ => seq(/=+/, ' ', /.*/),
-        note: $ => seq('NOTE: ', /[\w\s]+/),
+        _admonitions: $ =>
+            choice($.note, $.tip, $.important, $.caution, $.warning),
+        note: $ => seq('NOTE: ', /.+/),
+        tip: $ => seq('TIP: ', /.+/),
+        important: $ => seq('IMPORTANT: ', /.+/),
+        caution: $ => seq('CAUTION: ', /.+/),
+        warning: $ => seq('WARNING: ', /.+/),
         list: $ => seq(/[\-.]{1}/, ' ', /.*/),
         code: $ =>
             seq(

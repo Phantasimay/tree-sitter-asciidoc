@@ -1,0 +1,19 @@
+======
+Admonitions
+======
+
+NOTE: hello world!
+TIP: hello, world!
+IMPORTANT: hello, world!
+CAUTION: hello, world!
+WARNING: hello, world!
+
+----
+
+(document
+  (note)
+  (tip)
+  (important)
+  (caution)
+  (warning)
+)

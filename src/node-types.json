@@ -5,6 +5,11 @@
     "fields": {}
   },
   {
+    "type": "caution",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "code",
     "named": true,
     "fields": {}
@@ -32,6 +37,10 @@
           "named": true
         },
         {
+          "type": "caution",
+          "named": true
+        },
+        {
           "type": "code",
           "named": true
         },
@@ -52,6 +61,10 @@
           "named": true
         },
         {
+          "type": "important",
+          "named": true
+        },
+        {
           "type": "kbd",
           "named": true
         },
@@ -68,6 +81,10 @@
           "named": true
         },
         {
+          "type": "tip",
+          "named": true
+        },
+        {
           "type": "title",
           "named": true
         },
@@ -77,6 +94,10 @@
         },
         {
           "type": "video",
+          "named": true
+        },
+        {
+          "type": "warning",
           "named": true
         },
         {
@@ -93,6 +114,11 @@
   },
   {
     "type": "image",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "important",
     "named": true,
     "fields": {}
   },
@@ -117,6 +143,11 @@
     "fields": {}
   },
   {
+    "type": "tip",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "title",
     "named": true,
     "fields": {}
@@ -128,6 +159,11 @@
   },
   {
     "type": "video",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "warning",
     "named": true,
     "fields": {}
   },
@@ -169,7 +205,23 @@
     "named": false
   },
   {
+    "type": "CAUTION: ",
+    "named": false
+  },
+  {
+    "type": "IMPORTANT: ",
+    "named": false
+  },
+  {
     "type": "NOTE:",
+    "named": false
+  },
+  {
+    "type": "TIP: ",
+    "named": false
+  },
+  {
+    "type": "WARNING: ",
     "named": false
   },
   {
