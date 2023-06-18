@@ -4,7 +4,16 @@ module.exports = grammar({
     rules: {
         document: $ => repeat($._block),
         _block: $ =>
-            choice($.title, $.note, $.list, $.code, $.note, $.comment, $.image),
+            choice(
+                $.title,
+                $.note,
+                $.list,
+                $.code,
+                $.note,
+                $.comment,
+                $.image,
+                $.url
+            ),
         title: $ => seq(/=+/, ' ', /.*/),
         note: $ => seq('NOTE: ', /[\w\s]+/),
         list: $ => seq(/[\-.]{1}/, ' ', /.*/),
@@ -28,5 +37,7 @@ module.exports = grammar({
                 field('title', /[\w.]*/),
                 ']\n'
             ),
+        url: $ =>
+            seq(/[a-zA-z]+:\/\/[^\s]*/, optional(seq('[', /[\w.]*/, ']'))),
     },
 })

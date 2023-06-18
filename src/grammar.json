@@ -38,6 +38,10 @@
         {
           "type": "SYMBOL",
           "name": "image"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "url"
         }
       ]
     },
@@ -196,6 +200,40 @@
         {
           "type": "STRING",
           "value": "]\n"
+        }
+      ]
+    },
+    "url": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[a-zA-z]+:\\/\\/[^\\s]*"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "["
+                },
+                {
+                  "type": "PATTERN",
+                  "value": "[\\w.]*"
+                },
+                {
+                  "type": "STRING",
+                  "value": "]"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     }

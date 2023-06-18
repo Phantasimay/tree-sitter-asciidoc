@@ -40,6 +40,10 @@
         {
           "type": "title",
           "named": true
+        },
+        {
+          "type": "url",
+          "named": true
         }
       ]
     }
@@ -61,6 +65,11 @@
   },
   {
     "type": "title",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "url",
     "named": true,
     "fields": {}
   },
@@ -90,6 +99,10 @@
   },
   {
     "type": "[,",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
