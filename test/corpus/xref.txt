@@ -4,10 +4,12 @@ xref
 
 <<dest>>
 <<dest,title>>
+xref:xxx[title]
 
 ---
 
 (document
+  (xref)
   (xref)
   (xref)
 )

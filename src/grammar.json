@@ -428,6 +428,19 @@
       ]
     },
     "xref": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_inline_xref"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_xref"
+        }
+      ]
+    },
+    "_inline_xref": {
       "type": "SEQ",
       "members": [
         {
@@ -470,6 +483,43 @@
         {
           "type": "STRING",
           "value": ">>"
+        }
+      ]
+    },
+    "_xref": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "xref:"
+        },
+        {
+          "type": "FIELD",
+          "name": "url",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\w+"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "FIELD",
+          "name": "title",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\w+"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
         }
       ]
     },

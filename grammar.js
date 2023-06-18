@@ -19,7 +19,7 @@ module.exports = grammar({
                 $.description_list,
                 $.audio,
                 $.video,
-                $.paragraph,
+                $.paragraph
             ),
         title: $ => /=+ .*\n?/,
         _admonitions: $ =>
@@ -56,12 +56,22 @@ module.exports = grammar({
         footnote: $ => seq('footnote:[', optional(/[\w._]+/), ']'),
         kbd: $ => seq('kbd:[', optional(/\w+(\+\w+)?/), ']'),
         table: $ => seq('|===\n', repeat(/.*/), /\|===\n?/),
-        xref: $ =>
+        xref: $ => choice($._inline_xref, $._xref),
+        _inline_xref: $ =>
             seq(
                 '<<',
                 field('url', /\w+/),
                 optional(seq(',', field('title', /\w+/))),
                 '>>'
+            ),
+        _xref: $ =>
+            seq(
+                'xref:',
+                field('url', /\w+/),
+                '[',
+                field('title', /\w+/),
+                ']',
+                '\n'
             ),
         description_list: $ => seq(/\w+/, ':: ', /.+/),
         audio: $ =>

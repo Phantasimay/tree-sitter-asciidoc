@@ -324,6 +324,10 @@
     "named": false
   },
   {
+    "type": "xref:",
+    "named": false
+  },
+  {
     "type": "|===\n",
     "named": false
   }
