@@ -10,6 +10,11 @@
     "fields": {}
   },
   {
+    "type": "description_list",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "document",
     "named": true,
     "fields": {},
@@ -23,6 +28,10 @@
         },
         {
           "type": "comment",
+          "named": true
+        },
+        {
+          "type": "description_list",
           "named": true
         },
         {
@@ -127,6 +136,10 @@
   },
   {
     "type": "// ",
+    "named": false
+  },
+  {
+    "type": ":: ",
     "named": false
   },
   {

@@ -16,3 +16,4 @@ kbd:[Ctrl+K]
 |===
 <<dest>>
 <<dest,title>>
+title:: content

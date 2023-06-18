@@ -16,7 +16,8 @@ module.exports = grammar({
                 $.footnote,
                 $.kbd,
                 $.table,
-                $.xref
+                $.xref,
+                $.description_list
             ),
         title: $ => seq(/=+/, ' ', /.*/),
         note: $ => seq('NOTE: ', /[\w\s]+/),
@@ -53,5 +54,6 @@ module.exports = grammar({
                 optional(seq(',', field('title', /\w+/))),
                 '>>'
             ),
+        description_list: $ => seq(/\w+/, ':: ', /.+/),
     },
 })

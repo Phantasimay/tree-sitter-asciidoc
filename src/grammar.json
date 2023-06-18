@@ -58,6 +58,10 @@
         {
           "type": "SYMBOL",
           "name": "xref"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "description_list"
         }
       ]
     },
@@ -366,6 +370,23 @@
         {
           "type": "STRING",
           "value": ">>"
+        }
+      ]
+    },
+    "description_list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\\w+"
+        },
+        {
+          "type": "STRING",
+          "value": ":: "
+        },
+        {
+          "type": "PATTERN",
+          "value": ".+"
         }
       ]
     }
