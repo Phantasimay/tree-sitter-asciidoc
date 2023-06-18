@@ -183,11 +183,6 @@
     "fields": {}
   },
   {
-    "type": "title",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "url",
     "named": true,
     "fields": {}
@@ -309,6 +304,10 @@
   },
   {
     "type": "superscript",
+    "named": true
+  },
+  {
+    "type": "title",
     "named": true
   },
   {

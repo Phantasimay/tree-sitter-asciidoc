@@ -21,7 +21,7 @@ module.exports = grammar({
                 $.video,
                 $.paragraph
             ),
-        title: $ => seq(/=+ .*\n?/),
+        title: $ => /=+ .*\n?/,
         _admonitions: $ =>
             choice($.note, $.tip, $.important, $.caution, $.warning),
         note: $ => seq('NOTE: ', /.+/),

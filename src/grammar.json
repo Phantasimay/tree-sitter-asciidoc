@@ -74,13 +74,8 @@
       ]
     },
     "title": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "=+ .*\\n?"
-        }
-      ]
+      "type": "PATTERN",
+      "value": "=+ .*\\n?"
     },
     "_admonitions": {
       "type": "CHOICE",
