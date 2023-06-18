@@ -18,4 +18,5 @@
 (emphasis) @text.emphasis
 (strong) @text.strong
 (footnote) @text.footnote
+(monospace) @text.monospace
 

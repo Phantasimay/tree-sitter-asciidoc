@@ -25,4 +25,4 @@ title:: content
 audio::videofile.mp4[tite]
 video::videofile.mp4[title]
 
-Happy werewolves are *really* _slobbery_
+Happy werewolves are *really* `slobbery`
