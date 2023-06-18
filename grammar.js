@@ -18,7 +18,8 @@ module.exports = grammar({
                 $.xref,
                 $.description_list,
                 $.audio,
-                $.video
+                $.video,
+                $.line
             ),
         title: $ => seq(/=+/, ' ', /.*/),
         _admonitions: $ =>
@@ -79,5 +80,20 @@ module.exports = grammar({
                 field('title', optional(/[\w.]+/)),
                 ']'
             ),
+        line: $ => seq(repeat1($._inline_element), '\n'),
+        _inline_element: $ =>
+            choice(
+                $.emphasis,
+                $.strong,
+                $.monospace,
+                $.superscript,
+                $.subscript,
+                /\w+/
+            ),
+        emphasis: $ => /_\w+_/,
+        strong: $ => /\*\w+\*/,
+        monospace: $ => /`\w+`/,
+        superscript: $ => /\^\w+\^/,
+        subscript: $ => /~\w~/,
     },
 })

@@ -66,6 +66,10 @@
         {
           "type": "SYMBOL",
           "name": "video"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "line"
         }
       ]
     },
@@ -596,6 +600,71 @@
           "value": "]"
         }
       ]
+    },
+    "line": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_inline_element"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "_inline_element": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "emphasis"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "strong"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "monospace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "superscript"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "subscript"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\w+"
+        }
+      ]
+    },
+    "emphasis": {
+      "type": "PATTERN",
+      "value": "_\\w+_"
+    },
+    "strong": {
+      "type": "PATTERN",
+      "value": "\\*\\w+\\*"
+    },
+    "monospace": {
+      "type": "PATTERN",
+      "value": "`\\w+`"
+    },
+    "superscript": {
+      "type": "PATTERN",
+      "value": "\\^\\w+\\^"
+    },
+    "subscript": {
+      "type": "PATTERN",
+      "value": "~\\w~"
     }
   },
   "extras": [

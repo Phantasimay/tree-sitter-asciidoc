@@ -69,6 +69,10 @@
           "named": true
         },
         {
+          "type": "line",
+          "named": true
+        },
+        {
           "type": "list",
           "named": true
         },
@@ -126,6 +130,37 @@
     "type": "kbd",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "line",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "monospace",
+          "named": true
+        },
+        {
+          "type": "strong",
+          "named": true
+        },
+        {
+          "type": "subscript",
+          "named": true
+        },
+        {
+          "type": "superscript",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "list",
@@ -249,6 +284,10 @@
     "named": false
   },
   {
+    "type": "emphasis",
+    "named": true
+  },
+  {
     "type": "footnote:[",
     "named": false
   },
@@ -259,6 +298,22 @@
   {
     "type": "kbd:[",
     "named": false
+  },
+  {
+    "type": "monospace",
+    "named": true
+  },
+  {
+    "type": "strong",
+    "named": true
+  },
+  {
+    "type": "subscript",
+    "named": true
+  },
+  {
+    "type": "superscript",
+    "named": true
   },
   {
     "type": "video::",
