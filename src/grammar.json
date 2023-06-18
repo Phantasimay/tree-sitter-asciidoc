@@ -34,6 +34,10 @@
         {
           "type": "SYMBOL",
           "name": "comment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "image"
         }
       ]
     },
@@ -145,7 +149,7 @@
         },
         {
           "type": "STRING",
-          "value": "----\n"
+          "value": "----"
         }
       ]
     },
@@ -159,6 +163,39 @@
         {
           "type": "PATTERN",
           "value": ".*"
+        }
+      ]
+    },
+    "image": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "image::"
+        },
+        {
+          "type": "FIELD",
+          "name": "url",
+          "content": {
+            "type": "PATTERN",
+            "value": "[\\w./:]*"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "FIELD",
+          "name": "title",
+          "content": {
+            "type": "PATTERN",
+            "value": "[\\w.]*"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]\n"
         }
       ]
     }

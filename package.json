@@ -5,7 +5,8 @@
   "main": "bindings/node",
   "scripts": {
     "build": "pnpm exec tree-sitter generate",
-    "test": "pnpm exec tree-sitter test"
+    "test": "pnpm exec tree-sitter test",
+    "devtest": "pnpm build && pnpm exec tree-sitter parse 1.adoc"
   },
   "keywords": [],
   "author": "",
