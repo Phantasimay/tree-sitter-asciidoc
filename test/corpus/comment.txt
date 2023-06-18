@@ -1,0 +1,11 @@
+====
+comment
+====
+
+// this is a comment
+
+---
+
+(document
+  (comment)
+)

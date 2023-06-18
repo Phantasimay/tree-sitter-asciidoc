@@ -5,6 +5,11 @@
     "fields": {}
   },
   {
+    "type": "comment",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "document",
     "named": true,
     "fields": {},
@@ -14,6 +19,10 @@
       "types": [
         {
           "type": "code",
+          "named": true
+        },
+        {
+          "type": "comment",
           "named": true
         },
         {
@@ -52,6 +61,10 @@
   },
   {
     "type": "----\n",
+    "named": false
+  },
+  {
+    "type": "// ",
     "named": false
   },
   {

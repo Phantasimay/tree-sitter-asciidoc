@@ -7,3 +7,4 @@ NOTE: xxx
 ----
 ----
 NOTE: note some thing
+// this is a comment

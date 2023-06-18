@@ -30,6 +30,10 @@
         {
           "type": "SYMBOL",
           "name": "note"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "comment"
         }
       ]
     },
@@ -142,6 +146,19 @@
         {
           "type": "STRING",
           "value": "----\n"
+        }
+      ]
+    },
+    "comment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "// "
+        },
+        {
+          "type": "PATTERN",
+          "value": ".*"
         }
       ]
     }
