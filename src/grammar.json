@@ -233,20 +233,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "[,"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": " "
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "PATTERN",
+          "value": "\\[,\\s?"
         },
         {
           "type": "FIELD",
@@ -261,15 +249,19 @@
           "value": "]\n"
         },
         {
-          "type": "REPEAT",
-          "content": {
-            "type": "PATTERN",
-            "value": ".*"
-          }
-        },
-        {
           "type": "STRING",
           "value": "----\n"
+        },
+        {
+          "type": "FIELD",
+          "name": "content",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "PATTERN",
+              "value": ".+"
+            }
+          }
         },
         {
           "type": "PATTERN",

@@ -33,12 +33,11 @@ module.exports = grammar({
         _list_item: $ => seq(choice(/\*+/, /-+/, /\.+/), ' ', /.+/, '\n'),
         code: $ =>
             seq(
-                '[,',
-                optional(' '),
+                /\[,\s?/,
                 field('language', /\w+/),
                 ']\n',
-                repeat(/.*/),
                 '----\n',
+                field('content', repeat(/.+/)),
                 /----\n?/
             ),
         note: $ => seq('NOTE:', optional(seq(' ', /.*/))),
