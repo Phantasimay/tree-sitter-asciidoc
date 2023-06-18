@@ -640,23 +640,23 @@
     },
     "emphasis": {
       "type": "PATTERN",
-      "value": "_\\w+_"
+      "value": "_.+_"
     },
     "strong": {
       "type": "PATTERN",
-      "value": "\\*\\w+\\*"
+      "value": "\\*.+\\*"
     },
     "monospace": {
       "type": "PATTERN",
-      "value": "`\\w+`"
+      "value": "`.+`"
     },
     "superscript": {
       "type": "PATTERN",
-      "value": "\\^\\w+\\^"
+      "value": "\\^.+\\^"
     },
     "subscript": {
       "type": "PATTERN",
-      "value": "~\\w~"
+      "value": "~.+~"
     }
   },
   "extras": [

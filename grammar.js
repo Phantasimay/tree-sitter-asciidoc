@@ -90,10 +90,10 @@ module.exports = grammar({
                 $.subscript,
                 /\w+/
             ),
-        emphasis: $ => /_\w+_/,
-        strong: $ => /\*\w+\*/,
-        monospace: $ => /`\w+`/,
-        superscript: $ => /\^\w+\^/,
-        subscript: $ => /~\w~/,
+        emphasis: $ => /_.+_/,
+        strong: $ => /\*.+\*/,
+        monospace: $ => /`.+`/,
+        superscript: $ => /\^.+\^/,
+        subscript: $ => /~.+~/,
     },
 })
