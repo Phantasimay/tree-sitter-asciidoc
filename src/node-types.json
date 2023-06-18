@@ -1,5 +1,10 @@
 [
   {
+    "type": "code",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "document",
     "named": true,
     "fields": {},
@@ -8,71 +13,57 @@
       "required": false,
       "types": [
         {
-          "type": "title1",
+          "type": "code",
           "named": true
         },
         {
-          "type": "title2",
+          "type": "list",
           "named": true
         },
         {
-          "type": "title3",
+          "type": "note",
           "named": true
         },
         {
-          "type": "title4",
-          "named": true
-        },
-        {
-          "type": "title5",
+          "type": "title",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "title1",
+    "type": "list",
     "named": true,
     "fields": {}
   },
   {
-    "type": "title2",
+    "type": "note",
     "named": true,
     "fields": {}
   },
   {
-    "type": "title3",
+    "type": "title",
     "named": true,
     "fields": {}
   },
   {
-    "type": "title4",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "title5",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "= ",
+    "type": " ",
     "named": false
   },
   {
-    "type": "== ",
+    "type": "----\n",
     "named": false
   },
   {
-    "type": "=== ",
+    "type": "NOTE:",
     "named": false
   },
   {
-    "type": "==== ",
+    "type": "[,",
     "named": false
   },
   {
-    "type": "===== ",
+    "type": "]\n",
     "named": false
   }
 ]

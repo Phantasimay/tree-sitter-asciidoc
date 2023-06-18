@@ -13,48 +13,65 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_title"
+          "name": "title"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "note"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "list"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "code"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "note"
         }
       ]
     },
-    "_title": {
-      "type": "CHOICE",
+    "title": {
+      "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "title1"
+          "type": "PATTERN",
+          "value": "=+"
         },
         {
-          "type": "SYMBOL",
-          "name": "title2"
+          "type": "STRING",
+          "value": " "
         },
         {
-          "type": "SYMBOL",
-          "name": "title3"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "title4"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "title5"
+          "type": "PATTERN",
+          "value": ".*"
         }
       ]
     },
-    "title1": {
+    "note": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "= "
+          "value": "NOTE:"
         },
         {
           "type": "CHOICE",
           "members": [
             {
-              "type": "PATTERN",
-              "value": "[\\w\\s]+"
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": " "
+                },
+                {
+                  "type": "PATTERN",
+                  "value": ".*"
+                }
+              ]
             },
             {
               "type": "BLANK"
@@ -63,87 +80,68 @@
         }
       ]
     },
-    "title2": {
+    "list": {
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "== "
+          "type": "PATTERN",
+          "value": "[\\-.]{1}"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "[\\w\\s]+"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "STRING",
+          "value": " "
+        },
+        {
+          "type": "PATTERN",
+          "value": ".*"
         }
       ]
     },
-    "title3": {
+    "code": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "=== "
+          "value": "[,"
         },
         {
           "type": "CHOICE",
           "members": [
             {
-              "type": "PATTERN",
-              "value": "[\\w\\s]+"
+              "type": "STRING",
+              "value": " "
             },
             {
               "type": "BLANK"
             }
           ]
-        }
-      ]
-    },
-    "title4": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "==== "
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "[\\w\\s]+"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
-    },
-    "title5": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "===== "
+          "type": "FIELD",
+          "name": "language",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\w+"
+          }
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "[\\w\\s]+"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "STRING",
+          "value": "]\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "PATTERN",
+            "value": ".*"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "----\n"
+        },
+        {
+          "type": "STRING",
+          "value": "----\n"
         }
       ]
     }

@@ -12,10 +12,10 @@ head
 ---
 
 (document
-  (title1)
-  (title2)
-  (title3)
-  (title4)
-  (title5)
-  (title2)
+  (title)
+  (title)
+  (title)
+  (title)
+  (title)
+  (title)
 )

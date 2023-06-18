@@ -1,0 +1,11 @@
+======
+admintion
+======
+
+NOTE: hello world!
+
+----
+
+(document
+  (note)
+)
