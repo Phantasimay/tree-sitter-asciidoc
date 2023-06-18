@@ -17,7 +17,9 @@ module.exports = grammar({
                 $.kbd,
                 $.table,
                 $.xref,
-                $.description_list
+                $.description_list,
+                $.audio,
+                $.video
             ),
         title: $ => seq(/=+/, ' ', /.*/),
         note: $ => seq('NOTE: ', /[\w\s]+/),
@@ -55,5 +57,21 @@ module.exports = grammar({
                 '>>'
             ),
         description_list: $ => seq(/\w+/, ':: ', /.+/),
+        audio: $ =>
+            seq(
+                'audio::',
+                field('url', optional(/[\w.]*/)),
+                '[',
+                field('title', optional(/[\w.]+/)),
+                ']'
+            ),
+        video: $ =>
+            seq(
+                'video::',
+                field('url', optional(/[\w.]*/)),
+                '[',
+                field('title', optional(/[\w.]+/)),
+                ']'
+            ),
     },
 })

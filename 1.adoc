@@ -17,3 +17,5 @@ kbd:[Ctrl+K]
 <<dest>>
 <<dest,title>>
 title:: content
+audio::videofile.mp4[tite]
+video::videofile.mp4[title]

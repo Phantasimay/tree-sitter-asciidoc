@@ -62,6 +62,14 @@
         {
           "type": "SYMBOL",
           "name": "description_list"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "audio"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "video"
         }
       ]
     },
@@ -387,6 +395,104 @@
         {
           "type": "PATTERN",
           "value": ".+"
+        }
+      ]
+    },
+    "audio": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "audio::"
+        },
+        {
+          "type": "FIELD",
+          "name": "url",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[\\w.]*"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "FIELD",
+          "name": "title",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[\\w.]+"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "video": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "video::"
+        },
+        {
+          "type": "FIELD",
+          "name": "url",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[\\w.]*"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "FIELD",
+          "name": "title",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[\\w.]+"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]"
         }
       ]
     }
