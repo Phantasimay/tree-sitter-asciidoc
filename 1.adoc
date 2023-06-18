@@ -2,6 +2,10 @@
 == title2
 === title3
 NOTE: xxx
+TIP: tips
+IMPORTANT: important things
+CAUTION: caution
+WARNING: warning
 - item1
 - item2
 [, c]
@@ -21,4 +25,4 @@ title:: content
 audio::videofile.mp4[tite]
 video::videofile.mp4[title]
 
-Happy werewolves are *really* slobbery
+Happy werewolves are *really* _slobbery_

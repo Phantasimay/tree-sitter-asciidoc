@@ -1,7 +1,21 @@
 ; highlights.scm
 
+(title) @document.title
+(comment) @document.comment
+
+(note) @admonition.note
+(tip) @admonition.tip
+(important) @admonition.important
+(caution) @admonition.caution
+(warning) @admonition.warning
+
 [
-    "image::"
-    "audio::"
-    "video::"
-] @keyword
+  (url)
+  (xref)
+  (audio)
+  (video)
+] @text.uri
+(emphasis) @text.emphasis
+(strong) @text.strong
+(footnote) @text.footnote
+

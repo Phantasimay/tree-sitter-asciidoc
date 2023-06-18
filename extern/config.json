@@ -1,0 +1,45 @@
+{
+  "parser-directories": [
+    "/home/tea/github",
+    "/home/tea/src",
+    "/home/tea/source",
+    "/home/tea/"
+  ],
+  "theme": {
+    "document.title": {
+      "bold": true,
+      "color": "blue"
+    },
+    "document.comment": {
+      "color": 245,
+      "italic": true
+    },
+    "admonition.note": {
+      "color": "#00FFFF"
+    },
+    "admonition.tip": {
+      "color": "#00BFFF"
+    },
+    "admonition.important": {
+      "color": "red"
+    },
+    "admonition.caution": {
+      "color": "yellow"
+    },
+    "admonition.warning": {
+      "color": "yellow"
+    },
+    "text.uri": {
+      "underline": true
+    },
+    "text.emphasis": {
+      "italic": true
+    },
+    "text.strong": {
+      "bold": true
+    },
+    "text.footnote": {
+      "italic": true
+    }
+  }
+}
