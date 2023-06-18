@@ -14,9 +14,10 @@
   (xref)
   (audio)
   (video)
+  (image)
 ] @text.uri
 (emphasis) @text.emphasis
 (strong) @text.strong
 (footnote) @text.footnote
 (monospace) @text.monospace
-
+(replacement) @text.replacement

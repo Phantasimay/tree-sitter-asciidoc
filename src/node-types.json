@@ -158,6 +158,10 @@
           "named": true
         },
         {
+          "type": "replacement",
+          "named": true
+        },
+        {
           "type": "strong",
           "named": true
         },
@@ -171,6 +175,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "replacement",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "table",

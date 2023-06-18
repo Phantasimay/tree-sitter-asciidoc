@@ -628,6 +628,10 @@
           "name": "subscript"
         },
         {
+          "type": "SYMBOL",
+          "name": "replacement"
+        },
+        {
           "type": "PATTERN",
           "value": "\\w+"
         }
@@ -652,6 +656,251 @@
     "subscript": {
       "type": "PATTERN",
       "value": "~.+~"
+    },
+    "replacement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_blank"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_empty"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_sp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_nbsp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_zwsp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_wj"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_apos"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_quot"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_lsquo"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_rsquo"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_ldquo"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_rdquo"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_deg"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_plus"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_brvbar"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_vbar"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_amp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_lt"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_gt"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_startsb"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_endsb"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_caret"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_asterisk"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_tilde"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_backslash"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_backtick"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_two_colons"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_two_semicolons"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_cpp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_pp"
+        }
+      ]
+    },
+    "_blank": {
+      "type": "STRING",
+      "value": "{blank}"
+    },
+    "_empty": {
+      "type": "STRING",
+      "value": "{empty}"
+    },
+    "_sp": {
+      "type": "STRING",
+      "value": "{sp}"
+    },
+    "_nbsp": {
+      "type": "STRING",
+      "value": "{nbsp}"
+    },
+    "_zwsp": {
+      "type": "STRING",
+      "value": "{zwsp}"
+    },
+    "_wj": {
+      "type": "STRING",
+      "value": "{wj}"
+    },
+    "_apos": {
+      "type": "STRING",
+      "value": "{apos}"
+    },
+    "_quot": {
+      "type": "STRING",
+      "value": "{quot}"
+    },
+    "_lsquo": {
+      "type": "STRING",
+      "value": "{lsquo}"
+    },
+    "_rsquo": {
+      "type": "STRING",
+      "value": "{rsquo}"
+    },
+    "_ldquo": {
+      "type": "STRING",
+      "value": "{ldquo}"
+    },
+    "_rdquo": {
+      "type": "STRING",
+      "value": "{rdquo}"
+    },
+    "_deg": {
+      "type": "STRING",
+      "value": "{deg}"
+    },
+    "_plus": {
+      "type": "STRING",
+      "value": "{plus}"
+    },
+    "_brvbar": {
+      "type": "STRING",
+      "value": "{brvbar}"
+    },
+    "_vbar": {
+      "type": "STRING",
+      "value": "{vbar}"
+    },
+    "_amp": {
+      "type": "STRING",
+      "value": "{amp}"
+    },
+    "_lt": {
+      "type": "STRING",
+      "value": "{lt}"
+    },
+    "_gt": {
+      "type": "STRING",
+      "value": "{gt}"
+    },
+    "_startsb": {
+      "type": "STRING",
+      "value": "{startsb}"
+    },
+    "_endsb": {
+      "type": "STRING",
+      "value": "{endsb}"
+    },
+    "_caret": {
+      "type": "STRING",
+      "value": "{caret}"
+    },
+    "_asterisk": {
+      "type": "STRING",
+      "value": "{asterisk}"
+    },
+    "_tilde": {
+      "type": "STRING",
+      "value": "{tilde}"
+    },
+    "_backslash": {
+      "type": "STRING",
+      "value": "{backslash}"
+    },
+    "_backtick": {
+      "type": "STRING",
+      "value": "{backtick}"
+    },
+    "_two_colons": {
+      "type": "STRING",
+      "value": "{two-colons}"
+    },
+    "_two_semicolons": {
+      "type": "STRING",
+      "value": "{two-semicolons}"
+    },
+    "_cpp": {
+      "type": "STRING",
+      "value": "{cpp}"
+    },
+    "_pp": {
+      "type": "STRING",
+      "value": "{pp}"
     }
   },
   "extras": [
