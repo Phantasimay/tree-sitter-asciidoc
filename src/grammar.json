@@ -54,6 +54,10 @@
         {
           "type": "SYMBOL",
           "name": "table"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "xref"
         }
       ]
     },
@@ -316,6 +320,52 @@
         {
           "type": "STRING",
           "value": "|==="
+        }
+      ]
+    },
+    "xref": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "<<"
+        },
+        {
+          "type": "FIELD",
+          "name": "url",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\w+"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "FIELD",
+                  "name": "title",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "\\w+"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ">>"
         }
       ]
     }

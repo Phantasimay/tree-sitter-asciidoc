@@ -1,0 +1,13 @@
+====
+xref
+====
+
+<<dest>>
+<<dest,title>>
+
+---
+
+(document
+  (xref)
+  (xref)
+)

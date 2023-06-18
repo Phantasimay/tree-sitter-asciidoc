@@ -56,6 +56,10 @@
         {
           "type": "url",
           "named": true
+        },
+        {
+          "type": "xref",
+          "named": true
         }
       ]
     }
@@ -101,7 +105,16 @@
     "fields": {}
   },
   {
+    "type": "xref",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": " ",
+    "named": false
+  },
+  {
+    "type": ",",
     "named": false
   },
   {
@@ -114,6 +127,14 @@
   },
   {
     "type": "// ",
+    "named": false
+  },
+  {
+    "type": "<<",
+    "named": false
+  },
+  {
+    "type": ">>",
     "named": false
   },
   {

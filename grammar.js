@@ -15,7 +15,8 @@ module.exports = grammar({
                 $.url,
                 $.footnote,
                 $.kbd,
-                $.table
+                $.table,
+                $.xref
             ),
         title: $ => seq(/=+/, ' ', /.*/),
         note: $ => seq('NOTE: ', /[\w\s]+/),
@@ -45,5 +46,12 @@ module.exports = grammar({
         footnote: $ => seq('footnote:[', optional(/[\w._]+/), ']'),
         kbd: $ => seq('kbd:[', optional(/\w+(\+\w+)?/), ']'),
         table: $ => seq('|===\n', repeat(/.*/), '|==='),
+        xref: $ =>
+            seq(
+                '<<',
+                field('url', /\w+/),
+                optional(seq(',', field('title', /\w+/))),
+                '>>'
+            ),
     },
 })
