@@ -240,8 +240,8 @@
           "type": "FIELD",
           "name": "language",
           "content": {
-            "type": "PATTERN",
-            "value": "\\w+"
+            "type": "SYMBOL",
+            "name": "code_language"
           }
         },
         {
@@ -258,8 +258,8 @@
           "content": {
             "type": "REPEAT",
             "content": {
-              "type": "PATTERN",
-              "value": ".+"
+              "type": "SYMBOL",
+              "name": "code_content"
             }
           }
         },
@@ -268,6 +268,14 @@
           "value": "----\\n?"
         }
       ]
+    },
+    "code_language": {
+      "type": "PATTERN",
+      "value": "\\w+"
+    },
+    "code_content": {
+      "type": "PATTERN",
+      "value": ".+\\n"
     },
     "comment": {
       "type": "SEQ",

@@ -7,7 +7,8 @@
     "build": "pnpm exec tree-sitter generate",
     "test": "pnpm exec tree-sitter test",
     "devtest": "pnpm build && pnpm exec tree-sitter parse example.adoc",
-    "highlight": "pnpm exec tree-sitter highlight example.adoc"
+    "highlight": "pnpm exec tree-sitter highlight example.adoc",
+    "parse": "pnpm exec tree-sitter parse example.adoc"
   },
   "keywords": [],
   "author": "",

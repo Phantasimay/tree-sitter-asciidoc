@@ -12,6 +12,32 @@
   {
     "type": "code",
     "named": true,
+    "fields": {
+      "content": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "code_content",
+            "named": true
+          }
+        ]
+      },
+      "language": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "code_language",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "code_language",
+    "named": true,
     "fields": {}
   },
   {
@@ -287,6 +313,10 @@
   {
     "type": "audio::",
     "named": false
+  },
+  {
+    "type": "code_content",
+    "named": true
   },
   {
     "type": "emphasis",

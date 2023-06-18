@@ -2,6 +2,7 @@
 
 (title) @document.title
 (comment) @document.comment
+; (code) @document.code
 
 (note) @admonition.note
 (tip) @admonition.tip

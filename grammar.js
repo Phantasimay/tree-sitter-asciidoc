@@ -34,12 +34,14 @@ module.exports = grammar({
         code: $ =>
             seq(
                 /\[,\s?/,
-                field('language', /\w+/),
+                field('language', $.code_language),
                 ']\n',
                 '----\n',
-                field('content', repeat(/.+/)),
+                field('content', repeat($.code_content)),
                 /----\n?/
             ),
+        code_language: $ => /\w+/,
+        code_content: $ => /.+\n/,
         note: $ => seq('NOTE:', optional(seq(' ', /.*/))),
         comment: $ => seq('// ', /.*/),
         image: $ =>

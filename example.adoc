@@ -8,7 +8,7 @@ CAUTION: caution
 WARNING: warning
 - item1
 - item2
-[, c]
+[,python]
 ----
 print("hello, world")
 ----
