@@ -12,7 +12,8 @@ module.exports = grammar({
                 $.note,
                 $.comment,
                 $.image,
-                $.url
+                $.url,
+                $.footnote
             ),
         title: $ => seq(/=+/, ' ', /.*/),
         note: $ => seq('NOTE: ', /[\w\s]+/),
@@ -39,5 +40,6 @@ module.exports = grammar({
             ),
         url: $ =>
             seq(/[a-zA-z]+:\/\/[^\s]*/, optional(seq('[', /[\w.]*/, ']'))),
+        footnote: $ => seq('footnote:[', optional(/[\w._]+/), ']'),
     },
 })

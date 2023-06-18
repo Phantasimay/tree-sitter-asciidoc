@@ -10,3 +10,4 @@ NOTE: note some thing
 // this is a comment
 image::1.url[title]
 https://www.xxx.com
+footnote:[xxxx]

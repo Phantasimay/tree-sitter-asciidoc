@@ -1,0 +1,13 @@
+=====
+footnote
+=====
+
+footnote:[]
+footnote:[xxx]
+
+----
+
+(document
+  (footnote)
+  (footnote)
+)

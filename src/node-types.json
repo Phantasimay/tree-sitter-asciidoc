@@ -26,6 +26,10 @@
           "named": true
         },
         {
+          "type": "footnote",
+          "named": true
+        },
+        {
           "type": "image",
           "named": true
         },
@@ -47,6 +51,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "footnote",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "image",
@@ -107,6 +116,10 @@
   },
   {
     "type": "]\n",
+    "named": false
+  },
+  {
+    "type": "footnote:[",
     "named": false
   },
   {
