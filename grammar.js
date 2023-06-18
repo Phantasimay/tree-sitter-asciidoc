@@ -19,9 +19,9 @@ module.exports = grammar({
                 $.description_list,
                 $.audio,
                 $.video,
-                $.line
+                $.paragraph
             ),
-        title: $ => seq(/=+/, ' ', /.*/),
+        title: $ => seq(/=+ .*\n?/),
         _admonitions: $ =>
             choice($.note, $.tip, $.important, $.caution, $.warning),
         note: $ => seq('NOTE: ', /.+/),
@@ -39,7 +39,7 @@ module.exports = grammar({
                 ']\n',
                 repeat(/.*/),
                 '----\n',
-                '----'
+                /----\n?/
             ),
         note: $ => seq('NOTE:', optional(seq(' ', /.*/))),
         comment: $ => seq('// ', /.*/),
@@ -55,7 +55,7 @@ module.exports = grammar({
             seq(/[a-zA-z]+:\/\/[^\s]*/, optional(seq('[', /[\w.]*/, ']'))),
         footnote: $ => seq('footnote:[', optional(/[\w._]+/), ']'),
         kbd: $ => seq('kbd:[', optional(/\w+(\+\w+)?/), ']'),
-        table: $ => seq('|===\n', repeat(/.*/), '|==='),
+        table: $ => seq('|===\n', repeat(/.*/), /\|===\n?/),
         xref: $ =>
             seq(
                 '<<',
@@ -80,7 +80,7 @@ module.exports = grammar({
                 field('title', optional(/[\w.]+/)),
                 ']'
             ),
-        line: $ => seq(repeat1($._inline_element), '\n'),
+        paragraph: $ => seq(repeat1($._inline_element), '\n'),
         _inline_element: $ =>
             choice(
                 $.emphasis,

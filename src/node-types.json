@@ -69,15 +69,15 @@
           "named": true
         },
         {
-          "type": "line",
-          "named": true
-        },
-        {
           "type": "list",
           "named": true
         },
         {
           "type": "note",
+          "named": true
+        },
+        {
+          "type": "paragraph",
           "named": true
         },
         {
@@ -132,7 +132,17 @@
     "fields": {}
   },
   {
-    "type": "line",
+    "type": "list",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "note",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "paragraph",
     "named": true,
     "fields": {},
     "children": {
@@ -161,16 +171,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "list",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "note",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "table",
@@ -217,10 +217,6 @@
   },
   {
     "type": ",",
-    "named": false
-  },
-  {
-    "type": "----",
     "named": false
   },
   {
@@ -317,10 +313,6 @@
   },
   {
     "type": "video::",
-    "named": false
-  },
-  {
-    "type": "|===",
     "named": false
   },
   {
