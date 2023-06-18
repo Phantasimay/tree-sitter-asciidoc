@@ -46,6 +46,10 @@
           "named": true
         },
         {
+          "type": "table",
+          "named": true
+        },
+        {
           "type": "title",
           "named": true
         },
@@ -78,6 +82,11 @@
   },
   {
     "type": "note",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "table",
     "named": true,
     "fields": {}
   },
@@ -137,6 +146,14 @@
   },
   {
     "type": "kbd:[",
+    "named": false
+  },
+  {
+    "type": "|===",
+    "named": false
+  },
+  {
+    "type": "|===\n",
     "named": false
   }
 ]

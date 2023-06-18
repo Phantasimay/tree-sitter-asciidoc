@@ -50,6 +50,10 @@
         {
           "type": "SYMBOL",
           "name": "kbd"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "table"
         }
       ]
     },
@@ -292,6 +296,26 @@
         {
           "type": "STRING",
           "value": "]"
+        }
+      ]
+    },
+    "table": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "|===\n"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "PATTERN",
+            "value": ".*"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "|==="
         }
       ]
     }
