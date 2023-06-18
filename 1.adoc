@@ -2,7 +2,8 @@
 == title2
 === title3
 NOTE: xxx
-- list1
+- item1
+- item2
 [, c]
 ----
 ----

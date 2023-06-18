@@ -28,7 +28,8 @@ module.exports = grammar({
         important: $ => seq('IMPORTANT: ', /.+/),
         caution: $ => seq('CAUTION: ', /.+/),
         warning: $ => seq('WARNING: ', /.+/),
-        list: $ => seq(/[\-.]{1}/, ' ', /.*/),
+        list: $ => prec.right(repeat1($._list_item)),
+        _list_item: $ => seq(choice(/\*+/, /-+/, /\.+/), ' ', /.+/, '\n'),
         code: $ =>
             seq(
                 '[,',

@@ -194,11 +194,35 @@
       ]
     },
     "list": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "REPEAT1",
+        "content": {
+          "type": "SYMBOL",
+          "name": "_list_item"
+        }
+      }
+    },
+    "_list_item": {
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[\\-.]{1}"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "\\*+"
+            },
+            {
+              "type": "PATTERN",
+              "value": "-+"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\\.+"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -206,7 +230,11 @@
         },
         {
           "type": "PATTERN",
-          "value": ".*"
+          "value": ".+"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
         }
       ]
     },
