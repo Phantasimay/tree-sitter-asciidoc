@@ -42,8 +42,8 @@ module.exports = grammar({
         _warning: $ => seq('WARNING: ', /.+/),
         _warning_block: $ =>
             seq('[WARNING]\n', '----\n', repeat(/.+\n/), '----\n'),
-        list: $ => prec.right(repeat1($._list_item)),
-        _list_item: $ => /[\*\-\.]+ .+\n?/,
+        list: $ => seq($._list_item, '\n'),
+        _list_item: $ => repeat1(/[\*\-\.]+ .+\n?/),
         code: $ =>
             seq(
                 /\[,\s?/,

@@ -353,19 +353,24 @@
       ]
     },
     "list": {
-      "type": "PREC_RIGHT",
-      "value": 0,
-      "content": {
-        "type": "REPEAT1",
-        "content": {
+      "type": "SEQ",
+      "members": [
+        {
           "type": "SYMBOL",
           "name": "_list_item"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
         }
-      }
+      ]
     },
     "_list_item": {
-      "type": "PATTERN",
-      "value": "[\\*\\-\\.]+ .+\\n?"
+      "type": "REPEAT1",
+      "content": {
+        "type": "PATTERN",
+        "value": "[\\*\\-\\.]+ .+\\n?"
+      }
     },
     "code": {
       "type": "SEQ",

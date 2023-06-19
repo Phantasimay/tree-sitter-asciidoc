@@ -10,8 +10,10 @@ TIP: tips
 IMPORTANT: important things
 CAUTION: caution
 WARNING: warning
+
 - item1
 - item2
+
 [,python]
 ----
 print("hello, world")
