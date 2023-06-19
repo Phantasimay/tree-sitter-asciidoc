@@ -11,11 +11,7 @@ module.exports = grammar({
                 $.code,
                 $.comment,
                 $.image,
-                $.url,
-                $.footnote,
-                $.kbd,
                 $.table,
-                $.xref,
                 $.description_list,
                 $.audio,
                 $.video,
@@ -64,28 +60,7 @@ module.exports = grammar({
                 field('title', /[\w.]*/),
                 ']\n'
             ),
-        url: $ =>
-            seq(/[a-zA-z]+:\/\/[^\s]*/, optional(seq('[', /[\w.]*/, ']'))),
-        footnote: $ => seq('footnote:[', optional(/[\w._]+/), ']'),
-        kbd: $ => seq('kbd:[', optional(/\w+(\+\w+)?/), ']'),
         table: $ => seq('|===\n', repeat(/.*/), /\|===\n?/),
-        xref: $ => choice($._inline_xref, $._xref),
-        _inline_xref: $ =>
-            seq(
-                '<<',
-                field('url', /\w+/),
-                optional(seq(',', field('title', /\w+/))),
-                '>>'
-            ),
-        _xref: $ =>
-            seq(
-                'xref:',
-                field('url', /\w+/),
-                '[',
-                field('title', /\w+/),
-                ']',
-                '\n'
-            ),
         description_list: $ => seq(/\w+/, ':: ', /.+/),
         audio: $ =>
             seq(
@@ -113,8 +88,26 @@ module.exports = grammar({
                 $.subscript,
                 $.replacement,
                 $.passthrough,
+                $.kbd,
+                $.footnote,
+                $.url,
+                $.xref,
                 /\w+/
             ),
+        kbd: $ => seq('kbd:[', optional(/\w+(\+\w+)?/), ']'),
+        footnote: $ => seq('footnote:[', optional(/[\w._]+/), ']'),
+        url: $ =>
+            seq(/[a-zA-z]+:\/\/[^\s]*/, optional(seq('[', /[\w.]*/, ']'))),
+        xref: $ => choice($._inline_xref, $._xref),
+        _inline_xref: $ =>
+            seq(
+                '<<',
+                field('url', /\w+/),
+                optional(seq(',', field('title', /\w+/))),
+                '>>'
+            ),
+        _xref: $ =>
+            seq('xref:', field('url', /\w+/), '[', field('title', /\w+/), ']'),
         emphasis: $ => /_.+_/,
         strong: $ => /\*.+\*/,
         monospace: $ => /`.+`/,

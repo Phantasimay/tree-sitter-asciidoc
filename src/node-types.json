@@ -84,19 +84,11 @@
           "named": true
         },
         {
-          "type": "footnote",
-          "named": true
-        },
-        {
           "type": "image",
           "named": true
         },
         {
           "type": "important",
-          "named": true
-        },
-        {
-          "type": "kbd",
           "named": true
         },
         {
@@ -124,19 +116,11 @@
           "named": true
         },
         {
-          "type": "url",
-          "named": true
-        },
-        {
           "type": "video",
           "named": true
         },
         {
           "type": "warning",
-          "named": true
-        },
-        {
-          "type": "xref",
           "named": true
         }
       ]
@@ -185,6 +169,14 @@
           "named": true
         },
         {
+          "type": "footnote",
+          "named": true
+        },
+        {
+          "type": "kbd",
+          "named": true
+        },
+        {
           "type": "monospace",
           "named": true
         },
@@ -206,6 +198,14 @@
         },
         {
           "type": "superscript",
+          "named": true
+        },
+        {
+          "type": "url",
+          "named": true
+        },
+        {
+          "type": "xref",
           "named": true
         }
       ]
