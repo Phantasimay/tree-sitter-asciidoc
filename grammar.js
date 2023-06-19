@@ -50,11 +50,11 @@ module.exports = grammar({
                 field('language', $.code_language),
                 ']\n',
                 '----\n',
-                field('content', repeat($.code_content)),
+                field('content', optional($.code_content)),
                 '----\n'
             ),
         code_language: $ => /\w+/,
-        code_content: $ => /.+\n/,
+        code_content: $ => repeat1(/.+\n/),
         comment: $ => seq('// ', /.*/),
         image: $ =>
             seq(
