@@ -24,13 +24,26 @@ module.exports = grammar({
         title: $ => /=+ .*\n?/,
         _admonitions: $ =>
             choice($.note, $.tip, $.important, $.caution, $.warning),
-        note: $ => seq('NOTE: ', /.+/),
-        tip: $ => seq('TIP: ', /.+/),
-        important: $ => seq('IMPORTANT: ', /.+/),
-        caution: $ => seq('CAUTION: ', /.+/),
-        warning: $ => seq('WARNING: ', /.+/),
+        note: $ => choice($._note_line, $._note_block),
+        _note_line: $ => seq('NOTE: ', /.+/),
+        _note_block: $ => seq('[NOTE]\n', '----\n', repeat(/.+\n/), '----\n'),
+        tip: $ => choice($._tip, $._tip_block),
+        _tip: $ => seq('TIP: ', /.+/),
+        _tip_block: $ => seq('[TIP]\n', '----\n', repeat(/.+\n/), '----\n'),
+        important: $ => choice($._important, $._important_block),
+        _important: $ => seq('IMPORTANT: ', /.+/),
+        _important_block: $ =>
+            seq('[IMPORTANT]\n', '----\n', repeat(/.+\n/), '----\n'),
+        caution: $ => choice($._caution, $._caution_block),
+        _caution: $ => seq('CAUTION: ', /.+/),
+        _caution_block: $ =>
+            seq('[CAUTION]\n', '----\n', repeat(/.+\n/), '----\n'),
+        warning: $ => choice($._warning, $._warning_block),
+        _warning: $ => seq('WARNING: ', /.+/),
+        _warning_block: $ =>
+            seq('[WARNING]\n', '----\n', repeat(/.+\n/), '----\n'),
         list: $ => prec.right(repeat1($._list_item)),
-        _list_item: $ => seq(choice(/\*+/, /-+/, /\.+/), ' ', /.+/, '\n'),
+        _list_item: $ => /[\*\-\.]+ .+\n?/,
         code: $ =>
             seq(
                 /\[,\s?/,
@@ -38,11 +51,10 @@ module.exports = grammar({
                 ']\n',
                 '----\n',
                 field('content', repeat($.code_content)),
-                /----\n?/
+                '----\n'
             ),
         code_language: $ => /\w+/,
         code_content: $ => /.+\n/,
-        note: $ => seq('NOTE:', optional(seq(' ', /.*/))),
         comment: $ => seq('// ', /.*/),
         image: $ =>
             seq(

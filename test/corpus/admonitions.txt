@@ -7,6 +7,16 @@ TIP: hello, world!
 IMPORTANT: hello, world!
 CAUTION: hello, world!
 WARNING: hello, world!
+[NOTE]
+----
+hello, world!
+hello, world!
+----
+[CAUTION]
+----
+hello, world!
+hello, world!
+----
 
 ----
 
@@ -16,4 +26,6 @@ WARNING: hello, world!
   (important)
   (caution)
   (warning)
+  (note)
+  (caution)
 )

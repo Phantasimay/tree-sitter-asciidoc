@@ -9,5 +9,7 @@ code block
 ---|||
 
 (document
-  (code)
+  (code
+    (code_language)
+  )
 )

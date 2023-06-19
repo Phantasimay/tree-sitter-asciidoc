@@ -2,6 +2,10 @@
 == title2
 === title3
 NOTE: xxx
+[NOTE]
+----
+hello
+----
 TIP: tips
 IMPORTANT: important things
 CAUTION: caution
@@ -10,6 +14,7 @@ WARNING: warning
 - item2
 [,python]
 ----
+print("hello, world")
 print("hello, world")
 ----
 NOTE: note some thing

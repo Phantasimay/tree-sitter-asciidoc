@@ -36,6 +36,11 @@
     }
   },
   {
+    "type": "code_content",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "code_language",
     "named": true,
     "fields": {}
@@ -251,10 +256,6 @@
     "named": false
   },
   {
-    "type": " ",
-    "named": false
-  },
-  {
     "type": ",",
     "named": false
   },
@@ -287,7 +288,7 @@
     "named": false
   },
   {
-    "type": "NOTE:",
+    "type": "NOTE: ",
     "named": false
   },
   {
@@ -303,6 +304,26 @@
     "named": false
   },
   {
+    "type": "[CAUTION]\n",
+    "named": false
+  },
+  {
+    "type": "[IMPORTANT]\n",
+    "named": false
+  },
+  {
+    "type": "[NOTE]\n",
+    "named": false
+  },
+  {
+    "type": "[TIP]\n",
+    "named": false
+  },
+  {
+    "type": "[WARNING]\n",
+    "named": false
+  },
+  {
     "type": "]",
     "named": false
   },
@@ -313,10 +334,6 @@
   {
     "type": "audio::",
     "named": false
-  },
-  {
-    "type": "code_content",
-    "named": true
   },
   {
     "type": "emphasis",
