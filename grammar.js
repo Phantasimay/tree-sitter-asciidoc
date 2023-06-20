@@ -78,7 +78,7 @@ module.exports = grammar({
                 field('title', optional(/[\w.]+/)),
                 ']'
             ),
-        paragraph: $ => seq(repeat1($._inline_element), '\n'),
+        paragraph: $ => seq(repeat1($._inline_element), '\n\n'),
         _inline_element: $ =>
             choice(
                 $.emphasis,

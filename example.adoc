@@ -22,16 +22,26 @@ print("hello, world")
 NOTE: note some thing
 // this is a comment
 image::1.url[title]
+
 https://www.xxx.com
+
 footnote:[xxxx]
+
 kbd:[Ctrl+K]
+
 |===
 |===
+
 <<dest>>
+
 <<dest,title>>
+
 xref:xxxx[title]
+
 title:: content
+
 audio::videofile.mp4[tite]
+
 video::videofile.mp4[title]
 
 Happy werewolves are *really* `slobbery`
@@ -39,3 +49,4 @@ Happy werewolves are *really* `slobbery`
 this is a {cpp} content
 
 pass:[pass]
+
