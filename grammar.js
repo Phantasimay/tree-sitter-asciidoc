@@ -44,15 +44,17 @@ module.exports = grammar({
         // list
         list: $ => seq($._list_item, '\n'),
         _list_item: _$ => repeat1(/[\*\-\.]+ .+\n?/),
-        code: _$ =>
+        code: $ =>
             seq(
                 /\[,\s?/,
-                field('language', /\w+/),
+                field('language', $.code_language),
                 ']\n',
                 '----\n',
-                field('content', optional(repeat1(/.+\n/))),
+                field('content', optional($.code_content)),
                 '----\n'
             ),
+        code_language: _ => /\w+/,
+        code_content: _ => repeat1(/.+\n/),
         comment: _$ => seq('// ', /.*/),
         line_breaks: _ => seq(/[\-\*]{3}\n\n/),
         page_breaks: _ => seq('<<<\n\n'),
@@ -96,6 +98,7 @@ module.exports = grammar({
                 $.footnote,
                 $.url,
                 $.xref,
+                $.highlight,
                 /\w+/
             ),
         kbd: _$ => seq('kbd:[', optional(/\w+(\+\w+)?/), ']'),
@@ -115,6 +118,7 @@ module.exports = grammar({
         emphasis: _$ => /_.+_/,
         strong: _$ => /\*.+\*/,
         monospace: _$ => /`.+`/,
+        highlight: _ => /#.+#/,
         superscript: _$ => /\^.+\^/,
         subscript: _$ => /~.+~/,
         passthrough: _ => seq('pass:[', /\w+/, ']'),

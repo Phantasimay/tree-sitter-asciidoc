@@ -23,3 +23,4 @@
 (monospace) @text.monospace
 (replacement) @text.replacement
 (passthrough) @text.passthrough
+(highlight) @text.highlight
