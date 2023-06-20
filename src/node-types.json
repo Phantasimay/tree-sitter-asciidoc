@@ -69,6 +69,10 @@
           "named": true
         },
         {
+          "type": "page_breaks",
+          "named": true
+        },
+        {
           "type": "paragraph",
           "named": true
         },
@@ -122,6 +126,11 @@
   },
   {
     "type": "note",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "page_breaks",
     "named": true,
     "fields": {}
   },
@@ -246,6 +255,10 @@
   },
   {
     "type": "<<",
+    "named": false
+  },
+  {
+    "type": "<<<\n\n",
     "named": false
   },
   {

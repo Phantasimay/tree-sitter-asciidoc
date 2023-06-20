@@ -54,6 +54,10 @@
         {
           "type": "SYMBOL",
           "name": "paragraph"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "page_breaks"
         }
       ]
     },
@@ -414,6 +418,15 @@
         {
           "type": "PATTERN",
           "value": ".*"
+        }
+      ]
+    },
+    "page_breaks": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "<<<\n\n"
         }
       ]
     },
