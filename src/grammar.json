@@ -59,7 +59,7 @@
     },
     "title": {
       "type": "PATTERN",
-      "value": "=+ .*\\n?"
+      "value": "={1,6} .*\\n?"
     },
     "_admonitions": {
       "type": "CHOICE",

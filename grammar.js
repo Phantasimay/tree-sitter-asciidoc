@@ -17,7 +17,7 @@ module.exports = grammar({
                 $.video,
                 $.paragraph
             ),
-        title: _$ => /=+ .*\n?/,
+        title: _$ => /={1,6} .*\n?/,
         // Admonitions
         _admonitions: $ =>
             choice($.note, $.tip, $.important, $.caution, $.warning),
