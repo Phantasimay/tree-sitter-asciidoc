@@ -17,42 +17,42 @@ module.exports = grammar({
                 $.video,
                 $.paragraph
             ),
-        title: $ => /=+ .*\n?/,
+        title: _$ => /=+ .*\n?/,
+        // Admonitions
         _admonitions: $ =>
             choice($.note, $.tip, $.important, $.caution, $.warning),
         note: $ => choice($._note_line, $._note_block),
-        _note_line: $ => seq('NOTE: ', /.+/),
-        _note_block: $ => seq('[NOTE]\n', '----\n', repeat(/.+\n/), '----\n'),
+        _note_line: _$ => seq('NOTE: ', /.+/),
+        _note_block: _$ => seq('[NOTE]\n', '----\n', repeat(/.+\n/), '----\n'),
         tip: $ => choice($._tip, $._tip_block),
-        _tip: $ => seq('TIP: ', /.+/),
-        _tip_block: $ => seq('[TIP]\n', '----\n', repeat(/.+\n/), '----\n'),
+        _tip: _$ => seq('TIP: ', /.+/),
+        _tip_block: _$ => seq('[TIP]\n', '----\n', repeat(/.+\n/), '----\n'),
         important: $ => choice($._important, $._important_block),
-        _important: $ => seq('IMPORTANT: ', /.+/),
-        _important_block: $ =>
+        _important: _$ => seq('IMPORTANT: ', /.+/),
+        _important_block: _$ =>
             seq('[IMPORTANT]\n', '----\n', repeat(/.+\n/), '----\n'),
         caution: $ => choice($._caution, $._caution_block),
-        _caution: $ => seq('CAUTION: ', /.+/),
-        _caution_block: $ =>
+        _caution: _$ => seq('CAUTION: ', /.+/),
+        _caution_block: _$ =>
             seq('[CAUTION]\n', '----\n', repeat(/.+\n/), '----\n'),
         warning: $ => choice($._warning, $._warning_block),
-        _warning: $ => seq('WARNING: ', /.+/),
-        _warning_block: $ =>
+        _warning: _$ => seq('WARNING: ', /.+/),
+        _warning_block: _$ =>
             seq('[WARNING]\n', '----\n', repeat(/.+\n/), '----\n'),
+        // list
         list: $ => seq($._list_item, '\n'),
-        _list_item: $ => repeat1(/[\*\-\.]+ .+\n?/),
-        code: $ =>
+        _list_item: _$ => repeat1(/[\*\-\.]+ .+\n?/),
+        code: _$ =>
             seq(
                 /\[,\s?/,
-                field('language', $.code_language),
+                field('language', /\w+/),
                 ']\n',
                 '----\n',
-                field('content', optional($.code_content)),
+                field('content', optional(repeat1(/.+\n/))),
                 '----\n'
             ),
-        code_language: $ => /\w+/,
-        code_content: $ => repeat1(/.+\n/),
-        comment: $ => seq('// ', /.*/),
-        image: $ =>
+        comment: _$ => seq('// ', /.*/),
+        image: _$ =>
             seq(
                 'image::',
                 field('url', /[\w./:]*/),
@@ -60,9 +60,9 @@ module.exports = grammar({
                 field('title', /[\w.]*/),
                 ']\n'
             ),
-        table: $ => seq('|===\n', repeat(/.*/), /\|===\n?/),
-        description_list: $ => seq(/\w+/, ':: ', /.+/),
-        audio: $ =>
+        table: _$ => seq('|===\n', repeat(/.*/), /\|===\n?/),
+        description_list: _$ => seq(/\w+/, ':: ', /.+/),
+        audio: _$ =>
             seq(
                 'audio::',
                 field('url', optional(/[\w.]*/)),
@@ -70,7 +70,7 @@ module.exports = grammar({
                 field('title', optional(/[\w.]+/)),
                 ']'
             ),
-        video: $ =>
+        video: _$ =>
             seq(
                 'video::',
                 field('url', optional(/[\w.]*/)),
@@ -94,88 +94,58 @@ module.exports = grammar({
                 $.xref,
                 /\w+/
             ),
-        kbd: $ => seq('kbd:[', optional(/\w+(\+\w+)?/), ']'),
-        footnote: $ => seq('footnote:[', optional(/[\w._]+/), ']'),
-        url: $ =>
+        kbd: _$ => seq('kbd:[', optional(/\w+(\+\w+)?/), ']'),
+        footnote: _$ => seq('footnote:[', optional(/[\w._]+/), ']'),
+        url: _$ =>
             seq(/[a-zA-z]+:\/\/[^\s]*/, optional(seq('[', /[\w.]*/, ']'))),
         xref: $ => choice($._inline_xref, $._xref),
-        _inline_xref: $ =>
+        _inline_xref: _$ =>
             seq(
                 '<<',
                 field('url', /\w+/),
                 optional(seq(',', field('title', /\w+/))),
                 '>>'
             ),
-        _xref: $ =>
+        _xref: _$ =>
             seq('xref:', field('url', /\w+/), '[', field('title', /\w+/), ']'),
-        emphasis: $ => /_.+_/,
-        strong: $ => /\*.+\*/,
-        monospace: $ => /`.+`/,
-        superscript: $ => /\^.+\^/,
-        subscript: $ => /~.+~/,
-        passthrough: $ => seq('pass:[', /\w+/, ']'),
-        replacement: $ =>
+        emphasis: _$ => /_.+_/,
+        strong: _$ => /\*.+\*/,
+        monospace: _$ => /`.+`/,
+        superscript: _$ => /\^.+\^/,
+        subscript: _$ => /~.+~/,
+        passthrough: _ => seq('pass:[', /\w+/, ']'),
+        replacement: _ =>
             choice(
-                $._blank,
-                $._empty,
-                $._sp,
-                $._nbsp,
-                $._zwsp,
-                $._wj,
-                $._apos,
-                $._quot,
-                $._lsquo,
-                $._rsquo,
-                $._ldquo,
-                $._rdquo,
-                $._deg,
-                $._plus,
-                $._brvbar,
-                $._vbar,
-                $._amp,
-                $._lt,
-                $._gt,
-                $._startsb,
-                $._endsb,
-                $._caret,
-                $._asterisk,
-                $._tilde,
-                $._backslash,
-                $._backtick,
-                $._two_colons,
-                $._two_semicolons,
-                $._cpp,
-                $._pp
+                '{blank}',
+                '{empty}',
+                '{sp}',
+                '{nbsp}',
+                '{zwsp}',
+                '{wj}',
+                '{apos}',
+                '{quot}',
+                '{lsquo}',
+                '{rsquo}',
+                '{ldquo}',
+                '{rdquo}',
+                '{deg}',
+                '{plus}',
+                '{brvbar}',
+                '{vbar}',
+                '{amp}',
+                '{lt}',
+                '{gt}',
+                '{startsb}',
+                '{endsb}',
+                '{caret}',
+                '{asterisk}',
+                '{tilde}',
+                '{backslash}',
+                '{backtick}',
+                '{two-colons}',
+                '{two-semicolons}',
+                '{cpp}',
+                '{pp}'
             ),
-        _blank: _ => '{blank}',
-        _empty: _ => '{empty}',
-        _sp: _ => '{sp}',
-        _nbsp: _ => '{nbsp}',
-        _zwsp: _ => '{zwsp}',
-        _wj: _ => '{wj}',
-        _apos: _ => '{apos}',
-        _quot: _ => '{quot}',
-        _lsquo: _ => '{lsquo}',
-        _rsquo: _ => '{rsquo}',
-        _ldquo: _ => '{ldquo}',
-        _rdquo: _ => '{rdquo}',
-        _deg: _ => '{deg}',
-        _plus: _ => '{plus}',
-        _brvbar: _ => '{brvbar}',
-        _vbar: _ => '{vbar}',
-        _amp: _ => '{amp}',
-        _lt: _ => '{lt}',
-        _gt: _ => '{gt}',
-        _startsb: _ => '{startsb}',
-        _endsb: _ => '{endsb}',
-        _caret: _ => '{caret}',
-        _asterisk: _ => '{asterisk}',
-        _tilde: _ => '{tilde}',
-        _backslash: _ => '{backslash}',
-        _backtick: _ => '{backtick}',
-        _two_colons: _ => '{two-colons}',
-        _two_semicolons: _ => '{two-semicolons}',
-        _cpp: _ => '{cpp}',
-        _pp: _ => '{pp}',
     },
 })

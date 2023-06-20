@@ -367,8 +367,8 @@
           "type": "FIELD",
           "name": "language",
           "content": {
-            "type": "SYMBOL",
-            "name": "code_language"
+            "type": "PATTERN",
+            "value": "\\w+"
           }
         },
         {
@@ -386,8 +386,11 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "code_content"
+                "type": "REPEAT1",
+                "content": {
+                  "type": "PATTERN",
+                  "value": ".+\\n"
+                }
               },
               {
                 "type": "BLANK"
@@ -400,17 +403,6 @@
           "value": "----\n"
         }
       ]
-    },
-    "code_language": {
-      "type": "PATTERN",
-      "value": "\\w+"
-    },
-    "code_content": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "PATTERN",
-        "value": ".+\\n"
-      }
     },
     "comment": {
       "type": "SEQ",
@@ -879,246 +871,126 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_blank"
+          "type": "STRING",
+          "value": "{blank}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_empty"
+          "type": "STRING",
+          "value": "{empty}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_sp"
+          "type": "STRING",
+          "value": "{sp}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_nbsp"
+          "type": "STRING",
+          "value": "{nbsp}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_zwsp"
+          "type": "STRING",
+          "value": "{zwsp}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_wj"
+          "type": "STRING",
+          "value": "{wj}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_apos"
+          "type": "STRING",
+          "value": "{apos}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_quot"
+          "type": "STRING",
+          "value": "{quot}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_lsquo"
+          "type": "STRING",
+          "value": "{lsquo}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_rsquo"
+          "type": "STRING",
+          "value": "{rsquo}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_ldquo"
+          "type": "STRING",
+          "value": "{ldquo}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_rdquo"
+          "type": "STRING",
+          "value": "{rdquo}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_deg"
+          "type": "STRING",
+          "value": "{deg}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_plus"
+          "type": "STRING",
+          "value": "{plus}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_brvbar"
+          "type": "STRING",
+          "value": "{brvbar}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_vbar"
+          "type": "STRING",
+          "value": "{vbar}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_amp"
+          "type": "STRING",
+          "value": "{amp}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_lt"
+          "type": "STRING",
+          "value": "{lt}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_gt"
+          "type": "STRING",
+          "value": "{gt}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_startsb"
+          "type": "STRING",
+          "value": "{startsb}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_endsb"
+          "type": "STRING",
+          "value": "{endsb}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_caret"
+          "type": "STRING",
+          "value": "{caret}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_asterisk"
+          "type": "STRING",
+          "value": "{asterisk}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_tilde"
+          "type": "STRING",
+          "value": "{tilde}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_backslash"
+          "type": "STRING",
+          "value": "{backslash}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_backtick"
+          "type": "STRING",
+          "value": "{backtick}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_two_colons"
+          "type": "STRING",
+          "value": "{two-colons}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_two_semicolons"
+          "type": "STRING",
+          "value": "{two-semicolons}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_cpp"
+          "type": "STRING",
+          "value": "{cpp}"
         },
         {
-          "type": "SYMBOL",
-          "name": "_pp"
+          "type": "STRING",
+          "value": "{pp}"
         }
       ]
-    },
-    "_blank": {
-      "type": "STRING",
-      "value": "{blank}"
-    },
-    "_empty": {
-      "type": "STRING",
-      "value": "{empty}"
-    },
-    "_sp": {
-      "type": "STRING",
-      "value": "{sp}"
-    },
-    "_nbsp": {
-      "type": "STRING",
-      "value": "{nbsp}"
-    },
-    "_zwsp": {
-      "type": "STRING",
-      "value": "{zwsp}"
-    },
-    "_wj": {
-      "type": "STRING",
-      "value": "{wj}"
-    },
-    "_apos": {
-      "type": "STRING",
-      "value": "{apos}"
-    },
-    "_quot": {
-      "type": "STRING",
-      "value": "{quot}"
-    },
-    "_lsquo": {
-      "type": "STRING",
-      "value": "{lsquo}"
-    },
-    "_rsquo": {
-      "type": "STRING",
-      "value": "{rsquo}"
-    },
-    "_ldquo": {
-      "type": "STRING",
-      "value": "{ldquo}"
-    },
-    "_rdquo": {
-      "type": "STRING",
-      "value": "{rdquo}"
-    },
-    "_deg": {
-      "type": "STRING",
-      "value": "{deg}"
-    },
-    "_plus": {
-      "type": "STRING",
-      "value": "{plus}"
-    },
-    "_brvbar": {
-      "type": "STRING",
-      "value": "{brvbar}"
-    },
-    "_vbar": {
-      "type": "STRING",
-      "value": "{vbar}"
-    },
-    "_amp": {
-      "type": "STRING",
-      "value": "{amp}"
-    },
-    "_lt": {
-      "type": "STRING",
-      "value": "{lt}"
-    },
-    "_gt": {
-      "type": "STRING",
-      "value": "{gt}"
-    },
-    "_startsb": {
-      "type": "STRING",
-      "value": "{startsb}"
-    },
-    "_endsb": {
-      "type": "STRING",
-      "value": "{endsb}"
-    },
-    "_caret": {
-      "type": "STRING",
-      "value": "{caret}"
-    },
-    "_asterisk": {
-      "type": "STRING",
-      "value": "{asterisk}"
-    },
-    "_tilde": {
-      "type": "STRING",
-      "value": "{tilde}"
-    },
-    "_backslash": {
-      "type": "STRING",
-      "value": "{backslash}"
-    },
-    "_backtick": {
-      "type": "STRING",
-      "value": "{backtick}"
-    },
-    "_two_colons": {
-      "type": "STRING",
-      "value": "{two-colons}"
-    },
-    "_two_semicolons": {
-      "type": "STRING",
-      "value": "{two-semicolons}"
-    },
-    "_cpp": {
-      "type": "STRING",
-      "value": "{cpp}"
-    },
-    "_pp": {
-      "type": "STRING",
-      "value": "{pp}"
     }
   },
   "extras": [

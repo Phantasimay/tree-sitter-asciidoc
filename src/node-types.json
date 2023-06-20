@@ -12,37 +12,6 @@
   {
     "type": "code",
     "named": true,
-    "fields": {
-      "content": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "code_content",
-            "named": true
-          }
-        ]
-      },
-      "language": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "code_language",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "code_content",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "code_language",
-    "named": true,
     "fields": {}
   },
   {
@@ -381,6 +350,126 @@
   },
   {
     "type": "xref:",
+    "named": false
+  },
+  {
+    "type": "{amp}",
+    "named": false
+  },
+  {
+    "type": "{apos}",
+    "named": false
+  },
+  {
+    "type": "{asterisk}",
+    "named": false
+  },
+  {
+    "type": "{backslash}",
+    "named": false
+  },
+  {
+    "type": "{backtick}",
+    "named": false
+  },
+  {
+    "type": "{blank}",
+    "named": false
+  },
+  {
+    "type": "{brvbar}",
+    "named": false
+  },
+  {
+    "type": "{caret}",
+    "named": false
+  },
+  {
+    "type": "{cpp}",
+    "named": false
+  },
+  {
+    "type": "{deg}",
+    "named": false
+  },
+  {
+    "type": "{empty}",
+    "named": false
+  },
+  {
+    "type": "{endsb}",
+    "named": false
+  },
+  {
+    "type": "{gt}",
+    "named": false
+  },
+  {
+    "type": "{ldquo}",
+    "named": false
+  },
+  {
+    "type": "{lsquo}",
+    "named": false
+  },
+  {
+    "type": "{lt}",
+    "named": false
+  },
+  {
+    "type": "{nbsp}",
+    "named": false
+  },
+  {
+    "type": "{plus}",
+    "named": false
+  },
+  {
+    "type": "{pp}",
+    "named": false
+  },
+  {
+    "type": "{quot}",
+    "named": false
+  },
+  {
+    "type": "{rdquo}",
+    "named": false
+  },
+  {
+    "type": "{rsquo}",
+    "named": false
+  },
+  {
+    "type": "{sp}",
+    "named": false
+  },
+  {
+    "type": "{startsb}",
+    "named": false
+  },
+  {
+    "type": "{tilde}",
+    "named": false
+  },
+  {
+    "type": "{two-colons}",
+    "named": false
+  },
+  {
+    "type": "{two-semicolons}",
+    "named": false
+  },
+  {
+    "type": "{vbar}",
+    "named": false
+  },
+  {
+    "type": "{wj}",
+    "named": false
+  },
+  {
+    "type": "{zwsp}",
     "named": false
   },
   {
