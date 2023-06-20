@@ -57,6 +57,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "line_breaks"
+        },
+        {
+          "type": "SYMBOL",
           "name": "page_breaks"
         }
       ]
@@ -418,6 +422,15 @@
         {
           "type": "PATTERN",
           "value": ".*"
+        }
+      ]
+    },
+    "line_breaks": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[\\-\\*]{3}\\n\\n"
         }
       ]
     },

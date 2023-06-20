@@ -16,6 +16,7 @@ module.exports = grammar({
                 $.audio,
                 $.video,
                 $.paragraph,
+                $.line_breaks,
                 $.page_breaks
             ),
         title: _$ => /={1,6} .*\n?/,
@@ -53,6 +54,7 @@ module.exports = grammar({
                 '----\n'
             ),
         comment: _$ => seq('// ', /.*/),
+        line_breaks: _ => seq(/[\-\*]{3}\n\n/),
         page_breaks: _ => seq('<<<\n\n'),
         image: _$ =>
             seq(

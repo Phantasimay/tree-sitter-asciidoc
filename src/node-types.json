@@ -61,6 +61,10 @@
           "named": true
         },
         {
+          "type": "line_breaks",
+          "named": true
+        },
+        {
           "type": "list",
           "named": true
         },
@@ -116,6 +120,11 @@
   },
   {
     "type": "kbd",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "line_breaks",
     "named": true,
     "fields": {}
   },
