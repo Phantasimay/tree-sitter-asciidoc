@@ -1,14 +1,16 @@
-; highlights.scm
+;From nvim-treesitter/nvim-treesitter
 
-(title) @document.title
-(comment) @document.comment
+(title) @text.title
+(comment) @comment
 ; (code) @document.code
 
-(note) @admonition.note
-(tip) @admonition.tip
-(important) @admonition.important
-(caution) @admonition.caution
-(warning) @admonition.warning
+(note) @text.note
+[
+  (tip)
+  (important)
+  (caution)
+  (warning)
+] @function.builtin
 
 [
   (url)
@@ -20,7 +22,21 @@
 (emphasis) @text.emphasis
 (strong) @text.strong
 (footnote) @text.footnote
-(monospace) @text.monospace
-(replacement) @text.replacement
-(passthrough) @text.passthrough
-(highlight) @text.highlight
+(highlight) @text.warning
+(line_breaks) @punctuation.special
+(page_breaks) @punctuation.special
+(code_language) @parameter
+
+[
+  (code)
+  (kbd)
+  (footnote)
+] @function
+
+[
+  (monospace)
+  (replacement)
+  (passthrough)
+  (kbd_content)
+  (footnote_content)
+] @text.literal

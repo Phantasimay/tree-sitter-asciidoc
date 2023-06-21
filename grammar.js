@@ -101,8 +101,10 @@ module.exports = grammar({
                 $.highlight,
                 /\w+/
             ),
-        kbd: _$ => seq('kbd:[', optional(/\w+(\+\w+)?/), ']'),
-        footnote: _$ => seq('footnote:[', optional(/[\w._]+/), ']'),
+        kbd: $ => seq('kbd:[', optional($.kbd_content), ']'),
+        kbd_content: _ => /\w+(\+\w+)?/,
+        footnote: $ => seq('footnote:[', optional($.footnote_content), ']'),
+        footnote_content: $ => /[\w._]+/,
         url: _$ =>
             seq(/[a-zA-z]+:\/\/[^\s]*/, optional(seq('[', /[\w.]*/, ']'))),
         xref: $ => choice($._inline_xref, $._xref),

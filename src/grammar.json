@@ -703,8 +703,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "PATTERN",
-              "value": "\\w+(\\+\\w+)?"
+              "type": "SYMBOL",
+              "name": "kbd_content"
             },
             {
               "type": "BLANK"
@@ -717,6 +717,10 @@
         }
       ]
     },
+    "kbd_content": {
+      "type": "PATTERN",
+      "value": "\\w+(\\+\\w+)?"
+    },
     "footnote": {
       "type": "SEQ",
       "members": [
@@ -728,8 +732,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "PATTERN",
-              "value": "[\\w._]+"
+              "type": "SYMBOL",
+              "name": "footnote_content"
             },
             {
               "type": "BLANK"
@@ -741,6 +745,10 @@
           "value": "]"
         }
       ]
+    },
+    "footnote_content": {
+      "type": "PATTERN",
+      "value": "[\\w._]+"
     },
     "url": {
       "type": "SEQ",

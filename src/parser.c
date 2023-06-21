@@ -61,9 +61,9 @@ enum {
   anon_sym_video_COLON_COLON = 34,
   anon_sym_LF_LF = 35,
   anon_sym_kbd_COLON_LBRACK = 36,
-  aux_sym_kbd_token1 = 37,
+  sym_kbd_content = 37,
   anon_sym_footnote_COLON_LBRACK = 38,
-  aux_sym_footnote_token1 = 39,
+  sym_footnote_content = 39,
   aux_sym_url_token1 = 40,
   anon_sym_LT_LT = 41,
   anon_sym_COMMA = 42,
@@ -191,9 +191,9 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_video_COLON_COLON] = "video::",
   [anon_sym_LF_LF] = "\n\n",
   [anon_sym_kbd_COLON_LBRACK] = "kbd:[",
-  [aux_sym_kbd_token1] = "kbd_token1",
+  [sym_kbd_content] = "kbd_content",
   [anon_sym_footnote_COLON_LBRACK] = "footnote:[",
-  [aux_sym_footnote_token1] = "footnote_token1",
+  [sym_footnote_content] = "footnote_content",
   [aux_sym_url_token1] = "url_token1",
   [anon_sym_LT_LT] = "<<",
   [anon_sym_COMMA] = ",",
@@ -321,9 +321,9 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_video_COLON_COLON] = anon_sym_video_COLON_COLON,
   [anon_sym_LF_LF] = anon_sym_LF_LF,
   [anon_sym_kbd_COLON_LBRACK] = anon_sym_kbd_COLON_LBRACK,
-  [aux_sym_kbd_token1] = aux_sym_kbd_token1,
+  [sym_kbd_content] = sym_kbd_content,
   [anon_sym_footnote_COLON_LBRACK] = anon_sym_footnote_COLON_LBRACK,
-  [aux_sym_footnote_token1] = aux_sym_footnote_token1,
+  [sym_footnote_content] = sym_footnote_content,
   [aux_sym_url_token1] = aux_sym_url_token1,
   [anon_sym_LT_LT] = anon_sym_LT_LT,
   [anon_sym_COMMA] = anon_sym_COMMA,
@@ -562,17 +562,17 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = false,
   },
-  [aux_sym_kbd_token1] = {
-    .visible = false,
-    .named = false,
+  [sym_kbd_content] = {
+    .visible = true,
+    .named = true,
   },
   [anon_sym_footnote_COLON_LBRACK] = {
     .visible = true,
     .named = false,
   },
-  [aux_sym_footnote_token1] = {
-    .visible = false,
-    .named = false,
+  [sym_footnote_content] = {
+    .visible = true,
+    .named = true,
   },
   [aux_sym_url_token1] = {
     .visible = false,
@@ -3810,7 +3810,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(anon_sym_kbd_COLON_LBRACK);
       END_STATE();
     case 460:
-      ACCEPT_TOKEN(aux_sym_kbd_token1);
+      ACCEPT_TOKEN(sym_kbd_content);
       if (lookahead == '+') ADVANCE(267);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
@@ -3818,7 +3818,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           ('a' <= lookahead && lookahead <= 'z')) ADVANCE(460);
       END_STATE();
     case 461:
-      ACCEPT_TOKEN(aux_sym_kbd_token1);
+      ACCEPT_TOKEN(sym_kbd_content);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
@@ -3828,7 +3828,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(anon_sym_footnote_COLON_LBRACK);
       END_STATE();
     case 463:
-      ACCEPT_TOKEN(aux_sym_footnote_token1);
+      ACCEPT_TOKEN(sym_footnote_content);
       if (lookahead == '.' ||
           ('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
@@ -4226,9 +4226,9 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_RBRACK] = ACTIONS(1),
     [anon_sym_video_COLON_COLON] = ACTIONS(1),
     [anon_sym_kbd_COLON_LBRACK] = ACTIONS(1),
-    [aux_sym_kbd_token1] = ACTIONS(1),
+    [sym_kbd_content] = ACTIONS(1),
     [anon_sym_footnote_COLON_LBRACK] = ACTIONS(1),
-    [aux_sym_footnote_token1] = ACTIONS(1),
+    [sym_footnote_content] = ACTIONS(1),
     [anon_sym_LT_LT] = ACTIONS(1),
     [anon_sym_COMMA] = ACTIONS(1),
     [anon_sym_GT_GT] = ACTIONS(1),
@@ -8080,7 +8080,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(502), 1,
       anon_sym_RBRACK,
     ACTIONS(504), 1,
-      aux_sym_kbd_token1,
+      sym_kbd_content,
   [1036] = 2,
     ACTIONS(506), 1,
       aux_sym_audio_token1,
@@ -8090,7 +8090,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(510), 1,
       anon_sym_RBRACK,
     ACTIONS(512), 1,
-      aux_sym_footnote_token1,
+      sym_footnote_content,
   [1050] = 1,
     ACTIONS(514), 1,
       anon_sym_RBRACK,
