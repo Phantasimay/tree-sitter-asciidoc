@@ -5,7 +5,11 @@ module.exports = grammar({
         document: $ => repeat($._block),
         _block: $ =>
             choice(
-                $.title,
+                $.title1,
+                $.title2,
+                $.title3,
+                $.title4,
+                $.title5,
                 $._admonitions,
                 $.list,
                 $.code,
@@ -19,7 +23,11 @@ module.exports = grammar({
                 $.line_breaks,
                 $.page_breaks
             ),
-        title: _$ => /={1,6} .*\n?/,
+        title1: _ => /= .*\n?/,
+        title2: _ => /== .*\n?/,
+        title3: _ => /=== .*\n?/,
+        title4: _ => /==== .*\n?/,
+        title5: _ => /===== .*\n?/,
         // Admonitions
         _admonitions: $ =>
             choice($.note, $.tip, $.important, $.caution, $.warning),
@@ -42,8 +50,10 @@ module.exports = grammar({
         _warning_block: _$ =>
             seq('[WARNING]\n', '----\n', repeat(/.+\n/), '----\n'),
         // list
-        list: $ => seq($._list_item, '\n'),
-        _list_item: _$ => repeat1(/[\*\-\.]+ .+\n?/),
+        list: $ => seq(repeat1($.list_item), '\n'),
+        list_item: $ => seq($.list_item_mark, ' ', $.list_item_content),
+        list_item_mark: _ => /[\*\-\.]/,
+        list_item_content: _ => /.+\n?/,
         code: $ =>
             seq(
                 /\[,\s?/,
@@ -66,7 +76,10 @@ module.exports = grammar({
                 field('title', /[\w.]*/),
                 ']\n'
             ),
-        table: _$ => seq('|===\n', repeat(/.*/), /\|===\n?/),
+        table: $ => seq($.table_start, optional($.table_content), $.table_end),
+        table_start: _ => '|===\n',
+        table_content: _ => repeat1(/.+\n?/),
+        table_end: _ => '|===\n',
         description_list: _$ => seq(/\w+/, ':: ', /.+/),
         audio: _$ =>
             seq(

@@ -120,7 +120,23 @@
           "named": true
         },
         {
-          "type": "title",
+          "type": "title1",
+          "named": true
+        },
+        {
+          "type": "title2",
+          "named": true
+        },
+        {
+          "type": "title3",
+          "named": true
+        },
+        {
+          "type": "title4",
+          "named": true
+        },
+        {
+          "type": "title5",
           "named": true
         },
         {
@@ -181,6 +197,40 @@
   },
   {
     "type": "list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "list_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "list_item_content",
+          "named": true
+        },
+        {
+          "type": "list_item_mark",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list_item_content",
     "named": true,
     "fields": {}
   },
@@ -266,6 +316,39 @@
   {
     "type": "table",
     "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "table_content",
+          "named": true
+        },
+        {
+          "type": "table_end",
+          "named": true
+        },
+        {
+          "type": "table_start",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "table_content",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "table_end",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "table_start",
+    "named": true,
     "fields": {}
   },
   {
@@ -299,6 +382,10 @@
   },
   {
     "type": "\n\n",
+    "named": false
+  },
+  {
+    "type": " ",
     "named": false
   },
   {
@@ -414,6 +501,10 @@
     "named": true
   },
   {
+    "type": "list_item_mark",
+    "named": true
+  },
+  {
     "type": "monospace",
     "named": true
   },
@@ -434,7 +525,23 @@
     "named": true
   },
   {
-    "type": "title",
+    "type": "title1",
+    "named": true
+  },
+  {
+    "type": "title2",
+    "named": true
+  },
+  {
+    "type": "title3",
+    "named": true
+  },
+  {
+    "type": "title4",
+    "named": true
+  },
+  {
+    "type": "title5",
     "named": true
   },
   {

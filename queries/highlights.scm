@@ -1,6 +1,17 @@
 ;From nvim-treesitter/nvim-treesitter
 
-(title) @text.title
+(title1) @text.title.1
+(title2) @text.title.2
+(title3) @text.title.3
+(title4) @text.title.4
+(title5) @text.title.5
+
+[
+  (list_item_mark)
+  (table_start)
+  (table_end)
+]@punctuation.special
+
 (comment) @comment
 ; (code) @document.code
 
