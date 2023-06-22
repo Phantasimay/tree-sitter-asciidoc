@@ -24,3 +24,7 @@ tree-sitter = "~0.20.10"
 
 [build-dependencies]
 cc = "1.0"
+
+[[bin]]
+name = "benchmark"
+path = "benchmark/main.rs"
