@@ -974,6 +974,36 @@
       "value": "~.+~"
     },
     "passthrough": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_passthrough_plus"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_passthrough_cmd"
+        }
+      ]
+    },
+    "_passthrough_plus": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "+++"
+        },
+        {
+          "type": "PATTERN",
+          "value": ".+"
+        },
+        {
+          "type": "STRING",
+          "value": "+++"
+        }
+      ]
+    },
+    "_passthrough_cmd": {
       "type": "SEQ",
       "members": [
         {

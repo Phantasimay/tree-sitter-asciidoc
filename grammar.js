@@ -136,7 +136,9 @@ module.exports = grammar({
         highlight: _ => /#.+#/,
         superscript: _$ => /\^.+\^/,
         subscript: _$ => /~.+~/,
-        passthrough: _ => seq('pass:[', /\w+/, ']'),
+        passthrough: $ => choice($._passthrough_plus, $._passthrough_cmd),
+        _passthrough_plus: _ => seq('+++', /.+/, '+++'),
+        _passthrough_cmd: _ => seq('pass:[', /\w+/, ']'),
         replacement: _ =>
             choice(
                 '{blank}',
