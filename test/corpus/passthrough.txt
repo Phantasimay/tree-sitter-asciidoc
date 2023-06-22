@@ -3,12 +3,14 @@ passthrough
 ==============
 
 pass:[pass]
++++pass++
 
 
 ---
 
 (document
   (paragraph
+    (passthrough)
     (passthrough)
   )
 )

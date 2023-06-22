@@ -515,8 +515,8 @@
           "type": "FIELD",
           "name": "url",
           "content": {
-            "type": "PATTERN",
-            "value": "[\\w./:]*"
+            "type": "SYMBOL",
+            "name": "audio_url"
           }
         },
         {
@@ -527,8 +527,8 @@
           "type": "FIELD",
           "name": "title",
           "content": {
-            "type": "PATTERN",
-            "value": "[\\w.]*"
+            "type": "SYMBOL",
+            "name": "audio_title"
           }
         },
         {
@@ -608,8 +608,8 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "PATTERN",
-                "value": "[\\w.]*"
+                "type": "SYMBOL",
+                "name": "audio_url"
               },
               {
                 "type": "BLANK"
@@ -628,8 +628,8 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "PATTERN",
-                "value": "[\\w.]+"
+                "type": "SYMBOL",
+                "name": "audio_title"
               },
               {
                 "type": "BLANK"
@@ -642,6 +642,14 @@
           "value": "]"
         }
       ]
+    },
+    "audio_url": {
+      "type": "PATTERN",
+      "value": "[\\w.]+"
+    },
+    "audio_title": {
+      "type": "PATTERN",
+      "value": "[\\w.]+"
     },
     "video": {
       "type": "SEQ",
@@ -657,8 +665,8 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "PATTERN",
-                "value": "[\\w.]*"
+                "type": "SYMBOL",
+                "name": "audio_url"
               },
               {
                 "type": "BLANK"
@@ -677,8 +685,8 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "PATTERN",
-                "value": "[\\w.]+"
+                "type": "SYMBOL",
+                "name": "audio_title"
               },
               {
                 "type": "BLANK"
@@ -881,8 +889,8 @@
           "type": "FIELD",
           "name": "url",
           "content": {
-            "type": "PATTERN",
-            "value": "\\w+"
+            "type": "SYMBOL",
+            "name": "xref_url"
           }
         },
         {
@@ -899,8 +907,8 @@
                   "type": "FIELD",
                   "name": "title",
                   "content": {
-                    "type": "PATTERN",
-                    "value": "\\w+"
+                    "type": "SYMBOL",
+                    "name": "audio_title"
                   }
                 }
               ]
@@ -927,8 +935,8 @@
           "type": "FIELD",
           "name": "url",
           "content": {
-            "type": "PATTERN",
-            "value": "\\w+"
+            "type": "SYMBOL",
+            "name": "xref_url"
           }
         },
         {
@@ -939,8 +947,8 @@
           "type": "FIELD",
           "name": "title",
           "content": {
-            "type": "PATTERN",
-            "value": "\\w+"
+            "type": "SYMBOL",
+            "name": "audio_title"
           }
         },
         {
@@ -948,6 +956,10 @@
           "value": "]"
         }
       ]
+    },
+    "xref_url": {
+      "type": "PATTERN",
+      "value": "\\w+"
     },
     "emphasis": {
       "type": "PATTERN",
@@ -994,8 +1006,8 @@
           "value": "+++"
         },
         {
-          "type": "PATTERN",
-          "value": ".+"
+          "type": "SYMBOL",
+          "name": "passthrough_content"
         },
         {
           "type": "STRING",
@@ -1011,14 +1023,18 @@
           "value": "pass:["
         },
         {
-          "type": "PATTERN",
-          "value": "\\w+"
+          "type": "SYMBOL",
+          "name": "passthrough_content"
         },
         {
           "type": "STRING",
           "value": "]"
         }
       ]
+    },
+    "passthrough_content": {
+      "type": "PATTERN",
+      "value": "\\w+"
     },
     "replacement": {
       "type": "CHOICE",

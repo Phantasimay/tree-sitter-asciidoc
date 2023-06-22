@@ -68,12 +68,12 @@ module.exports = grammar({
         comment: _$ => seq('// ', /.*/),
         line_breaks: _ => seq(/[\-\*]{3}\n\n/),
         page_breaks: _ => seq('<<<\n\n'),
-        image: _$ =>
+        image: $ =>
             seq(
                 'image::',
-                field('url', /[\w./:]*/),
+                field('url', $.audio_url),
                 '[',
-                field('title', /[\w.]*/),
+                field('title', $.audio_title),
                 ']\n'
             ),
         table: $ => seq($.table_start, optional($.table_content), $.table_end),
@@ -81,20 +81,22 @@ module.exports = grammar({
         table_content: _ => repeat1(/.+\n?/),
         table_end: _ => '|===\n',
         description_list: _$ => seq(/\w+/, ':: ', /.+/),
-        audio: _$ =>
+        audio: $ =>
             seq(
                 'audio::',
-                field('url', optional(/[\w.]*/)),
+                field('url', optional($.audio_url)),
                 '[',
-                field('title', optional(/[\w.]+/)),
+                field('title', optional($.audio_title)),
                 ']'
             ),
-        video: _$ =>
+        audio_url: _ => /[\w.]+/,
+        audio_title: _ => /[\w.]+/,
+        video: $ =>
             seq(
                 'video::',
-                field('url', optional(/[\w.]*/)),
+                field('url', optional($.audio_url)),
                 '[',
-                field('title', optional(/[\w.]+/)),
+                field('title', optional($.audio_title)),
                 ']'
             ),
         paragraph: $ => seq(repeat1($._inline_element), '\n\n'),
@@ -121,15 +123,16 @@ module.exports = grammar({
         url: _$ =>
             seq(/[a-zA-z]+:\/\/[^\s]*/, optional(seq('[', /[\w.]*/, ']'))),
         xref: $ => choice($._inline_xref, $._xref),
-        _inline_xref: _$ =>
+        _inline_xref: $ =>
             seq(
                 '<<',
-                field('url', /\w+/),
-                optional(seq(',', field('title', /\w+/))),
+                field('url', $.xref_url),
+                optional(seq(',', field('title', $.audio_title))),
                 '>>'
             ),
-        _xref: _$ =>
-            seq('xref:', field('url', /\w+/), '[', field('title', /\w+/), ']'),
+        _xref: $ =>
+            seq('xref:', field('url', $.xref_url), '[', field('title', $.audio_title), ']'),
+        xref_url: _ => /\w+/,
         emphasis: _$ => /_.+_/,
         strong: _$ => /\*.+\*/,
         monospace: _$ => /`.+`/,
@@ -137,8 +140,9 @@ module.exports = grammar({
         superscript: _$ => /\^.+\^/,
         subscript: _$ => /~.+~/,
         passthrough: $ => choice($._passthrough_plus, $._passthrough_cmd),
-        _passthrough_plus: _ => seq('+++', /.+/, '+++'),
-        _passthrough_cmd: _ => seq('pass:[', /\w+/, ']'),
+        _passthrough_plus: $ => seq('+++', $.passthrough_content, '+++'),
+        _passthrough_cmd: $ => seq('pass:[', $.passthrough_content, ']'),
+        passthrough_content: _ => /\w+/,
         replacement: _ =>
             choice(
                 '{blank}',

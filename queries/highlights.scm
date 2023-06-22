@@ -25,10 +25,8 @@
 
 [
   (url)
-  (xref)
-  (audio)
-  (video)
-  (image)
+  (audio_url)
+  (xref_url)
 ] @text.uri
 (emphasis) @text.emphasis
 (strong) @text.strong
@@ -42,12 +40,18 @@
   (code)
   (kbd)
   (footnote)
+  (passthrough)
+  (audio)
+  (video)
+  (image)
+  (xref)
 ] @function
 
 [
   (monospace)
   (replacement)
-  (passthrough)
   (kbd_content)
   (footnote_content)
+  (passthrough_content)
+  (audio_title)
 ] @text.literal
