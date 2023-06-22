@@ -5,9 +5,14 @@ footnote
 footnote:[]
 footnote:[xxx]
 
+
 ----
 
 (document
-  (footnote)
-  (footnote)
+  (paragraph
+    (footnote)
+    (footnote
+      (footnote_content)
+    )
+  )
 )

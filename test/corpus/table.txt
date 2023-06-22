@@ -8,5 +8,8 @@ table
 ---
 
 (document
-  (table)
+  (table
+    (table_start)
+    (table_end)
+  )
 )

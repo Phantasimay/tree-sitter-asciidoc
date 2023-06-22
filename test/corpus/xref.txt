@@ -6,10 +6,13 @@ xref
 <<dest,title>>
 xref:xxx[title]
 
+
 ---
 
 (document
-  (xref)
-  (xref)
-  (xref)
+  (paragraph
+    (xref)
+    (xref)
+    (xref)
+  )
 )

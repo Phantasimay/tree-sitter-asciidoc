@@ -6,10 +6,17 @@ kbd:[K]
 kbd:[Ctrl+alt]
 kbd:[]
 
+
 ----
 
 (document
-  (kbd)
-  (kbd)
-  (kbd)
+  (paragraph
+    (kbd
+      (kbd_content)
+    )
+    (kbd
+      (kbd_content)
+    )
+    (kbd)
+  )
 )
