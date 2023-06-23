@@ -347,8 +347,12 @@
           "name": "attr_mark"
         },
         {
+          "type": "STRING",
+          "value": " "
+        },
+        {
           "type": "SYMBOL",
-          "name": "urlrepo_value"
+          "name": "autolinks"
         },
         {
           "type": "STRING",
@@ -356,9 +360,35 @@
         }
       ]
     },
-    "urlrepo_value": {
-      "type": "SYMBOL",
-      "name": "autolinks"
+    "_link_with_underscores": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "attr_mark"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "link-with-underscores"
+          },
+          "named": true,
+          "value": "attr_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "attr_mark"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "autolinks"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
     },
     "_hide_uri_scheme": {
       "type": "SEQ",
@@ -434,6 +464,10 @@
         {
           "type": "SYMBOL",
           "name": "_doc_description"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_link_with_underscores"
         },
         {
           "type": "SYMBOL",

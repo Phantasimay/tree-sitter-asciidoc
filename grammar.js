@@ -75,10 +75,18 @@ module.exports = grammar({
                 $.attr_mark,
                 alias('url-repo', $.attr_name),
                 $.attr_mark,
-                $.urlrepo_value,
+                ' ',
+                $.autolinks,
                 '\n'
             ),
-        urlrepo_value: $ => $.autolinks,
+        _link_with_underscores: $ =>
+            seq(
+                $.attr_mark,
+                alias('link-with-underscores', $.attr_name),
+                $.attr_mark,
+                $.autolinks,
+                '\n'
+            ),
         _hide_uri_scheme: $ =>
             seq(
                 $.attr_mark,
@@ -100,6 +108,7 @@ module.exports = grammar({
                 $._hide_uri_scheme,
                 $._sectanchors,
                 $._doc_description,
+                $._link_with_underscores,
                 $.author_info
             ),
         attr_mark: _ => ':',

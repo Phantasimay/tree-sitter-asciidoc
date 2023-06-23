@@ -59,7 +59,6 @@
   (passthrough_content)
   (audio_title)
   (attr_value)
-  (urlrepo_value)
 ] @text.literal
 
 [
