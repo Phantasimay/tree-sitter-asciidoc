@@ -42,21 +42,21 @@ module.exports = grammar({
         _admonitions: $ =>
             choice($.note, $.tip, $.important, $.caution, $.warning),
         note: $ => choice($._note_line, $._note_block),
-        _note_line: _$ => seq('NOTE: ', /.+/),
+        _note_line: _$ => seq('NOTE: ', /.+\n?/),
         _note_block: _$ => seq('[NOTE]\n', '----\n', repeat(/.+\n/), '----\n'),
         tip: $ => choice($._tip, $._tip_block),
-        _tip: _$ => seq('TIP: ', /.+/),
+        _tip: _$ => seq('TIP: ', /.+\n?/),
         _tip_block: _$ => seq('[TIP]\n', '----\n', repeat(/.+\n/), '----\n'),
         important: $ => choice($._important, $._important_block),
-        _important: _$ => seq('IMPORTANT: ', /.+/),
+        _important: _$ => seq('IMPORTANT: ', /.+\n?/),
         _important_block: _$ =>
             seq('[IMPORTANT]\n', '----\n', repeat(/.+\n/), '----\n'),
         caution: $ => choice($._caution, $._caution_block),
-        _caution: _$ => seq('CAUTION: ', /.+/),
+        _caution: _$ => seq('CAUTION: ', /.+\n?/),
         _caution_block: _$ =>
             seq('[CAUTION]\n', '----\n', repeat(/.+\n/), '----\n'),
         warning: $ => choice($._warning, $._warning_block),
-        _warning: _$ => seq('WARNING: ', /.+/),
+        _warning: _$ => seq('WARNING: ', /.+\n?/),
         _warning_block: _$ =>
             seq('[WARNING]\n', '----\n', repeat(/.+\n/), '----\n'),
         // list
@@ -83,7 +83,7 @@ module.exports = grammar({
             ),
         code_language: _ => /\w+/,
         code_content: _ => repeat1(/.+\n/),
-        comment: _$ => seq('// ', /.*/),
+        comment: _$ => seq('// ', /.*\n?/),
         line_breaks: _ => seq(/[\-\*]{3}\n\n/),
         page_breaks: _ => seq('<<<\n\n'),
         image: $ =>
@@ -98,14 +98,15 @@ module.exports = grammar({
         table_start: _ => '|===\n',
         table_content: _ => repeat1(/.+\n?/),
         table_end: _ => '|===\n',
-        description_list: _$ => seq(/\w+/, ':: ', /.+/),
+        description_list: _$ => seq(/\w+/, ':: ', /.+/, '\n'),
         audio: $ =>
             seq(
                 'audio::',
                 field('url', optional($.audio_url)),
                 '[',
                 field('title', optional($.audio_title)),
-                ']'
+                ']',
+                '\n'
             ),
         audio_url: _ => /[\w.]+/,
         audio_title: _ => /[\w.]+/,
@@ -115,7 +116,8 @@ module.exports = grammar({
                 field('url', optional($.audio_url)),
                 '[',
                 field('title', optional($.audio_title)),
-                ']'
+                ']',
+                '\n'
             ),
         paragraph: $ => seq(repeat1($._inline_element), '\n\n'),
         _inline_element: $ =>
