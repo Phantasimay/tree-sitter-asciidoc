@@ -44,8 +44,11 @@ module.exports = grammar({
         author_info: $ =>
             seq(
                 $.name,
+                ' ',
                 optional($.name),
+                ' ',
                 optional($.name),
+                ' ',
                 optional(seq('<', $.email, '>')),
                 '\n'
             ),
@@ -56,6 +59,7 @@ module.exports = grammar({
                 $.attr_mark,
                 alias('doctype', $.attr_name),
                 $.attr_mark,
+                ' ',
                 alias(
                     choice('article', 'book', 'manpage', 'inline'),
                     $.attr_value
