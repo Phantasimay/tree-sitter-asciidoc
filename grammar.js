@@ -78,7 +78,7 @@ module.exports = grammar({
                 $.urlrepo_value,
                 '\n'
             ),
-        urlrepo_value: $ => $.url,
+        urlrepo_value: $ => $.autolinks,
         _hide_uri_scheme: $ =>
             seq(
                 $.attr_mark,
@@ -198,7 +198,7 @@ module.exports = grammar({
                 $.passthrough,
                 $.kbd,
                 $.footnote,
-                $.url,
+                $.links,
                 $.xref,
                 $.highlight,
                 /\w+/
@@ -207,8 +207,11 @@ module.exports = grammar({
         kbd_content: _ => /\w+(\+\w+)?/,
         footnote: $ => seq('footnote:[', optional($.footnote_content), ']'),
         footnote_content: $ => /[\w._]+/,
-        url: _$ =>
-            seq(/[a-zA-z]+:\/\/[^\s]*/, optional(seq('[', /[\w.]*/, ']'))),
+        links: $ => seq($.url_macro),
+        autolinks: _ => /\w+:\/\/.+/,
+        url_macro: $ => seq($.autolinks, optional(seq('[', /.+/, ']'))),
+        // http_url: _$ =>
+        //     seq(/[a-zA-z]+:\/\/[^\s]*/, optional(seq('[', /[\w.]*/, ']'))),
         xref: $ => choice($._inline_xref, $._xref),
         _inline_xref: $ =>
             seq(

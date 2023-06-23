@@ -358,7 +358,7 @@
     },
     "urlrepo_value": {
       "type": "SYMBOL",
-      "name": "url"
+      "name": "autolinks"
     },
     "_hide_uri_scheme": {
       "type": "SEQ",
@@ -1164,7 +1164,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "url"
+          "name": "links"
         },
         {
           "type": "SYMBOL",
@@ -1238,12 +1238,25 @@
       "type": "PATTERN",
       "value": "[\\w._]+"
     },
-    "url": {
+    "links": {
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[a-zA-z]+:\\/\\/[^\\s]*"
+          "type": "SYMBOL",
+          "name": "url_macro"
+        }
+      ]
+    },
+    "autolinks": {
+      "type": "PATTERN",
+      "value": "\\w+:\\/\\/.+"
+    },
+    "url_macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "autolinks"
         },
         {
           "type": "CHOICE",
@@ -1257,7 +1270,7 @@
                 },
                 {
                   "type": "PATTERN",
-                  "value": "[\\w.]*"
+                  "value": ".+"
                 },
                 {
                   "type": "STRING",
