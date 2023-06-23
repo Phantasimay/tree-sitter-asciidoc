@@ -13,6 +13,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "title0"
+        },
+        {
+          "type": "SYMBOL",
           "name": "title1"
         },
         {
@@ -125,7 +129,7 @@
         }
       ]
     },
-    "title1": {
+    "title0": {
       "type": "SEQ",
       "members": [
         {
@@ -161,21 +165,25 @@
         }
       ]
     },
-    "title2": {
+    "title1": {
       "type": "PATTERN",
       "value": "== .*\\n?"
     },
-    "title3": {
+    "title2": {
       "type": "PATTERN",
       "value": "=== .*\\n?"
     },
-    "title4": {
+    "title3": {
       "type": "PATTERN",
       "value": "==== .*\\n?"
     },
-    "title5": {
+    "title4": {
       "type": "PATTERN",
       "value": "===== .*\\n?"
+    },
+    "title5": {
+      "type": "PATTERN",
+      "value": "====== .*\\n?"
     },
     "author_info": {
       "type": "SEQ",

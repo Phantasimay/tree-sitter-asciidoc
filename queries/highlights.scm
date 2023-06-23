@@ -1,5 +1,6 @@
 ;From nvim-treesitter/nvim-treesitter
 
+(title0) @text.title.0
 (title1) @text.title.1
 (title2) @text.title.2
 (title3) @text.title.3

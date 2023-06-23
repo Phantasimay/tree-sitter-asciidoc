@@ -212,6 +212,10 @@
           "named": true
         },
         {
+          "type": "title0",
+          "named": true
+        },
+        {
           "type": "title1",
           "named": true
         },
@@ -490,7 +494,7 @@
     "fields": {}
   },
   {
-    "type": "title1",
+    "type": "title0",
     "named": true,
     "fields": {},
     "children": {
@@ -745,6 +749,10 @@
   },
   {
     "type": "superscript",
+    "named": true
+  },
+  {
+    "type": "title1",
     "named": true
   },
   {

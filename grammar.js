@@ -5,6 +5,7 @@ module.exports = grammar({
         document: $ => repeat($._block),
         _block: $ =>
             choice(
+                $.title0,
                 $.title1,
                 $.title2,
                 $.title3,
@@ -33,16 +34,17 @@ module.exports = grammar({
                 )
             ),
         block_title: _ => seq('.', /.+\n?/),
-        title1: $ =>
+        title0: $ =>
             seq(
                 /= .*\n?/,
                 optional($.author_info),
                 optional(repeat1($.doc_attr))
             ),
-        title2: _ => /== .*\n?/,
-        title3: _ => /=== .*\n?/,
-        title4: _ => /==== .*\n?/,
-        title5: _ => /===== .*\n?/,
+        title1: _ => /== .*\n?/,
+        title2: _ => /=== .*\n?/,
+        title3: _ => /==== .*\n?/,
+        title4: _ => /===== .*\n?/,
+        title5: _ => /====== .*\n?/,
         author_info: $ =>
             seq(
                 $.name,
