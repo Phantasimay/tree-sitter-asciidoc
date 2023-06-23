@@ -296,6 +296,11 @@
     "fields": {}
   },
   {
+    "type": "list_item_mark",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "note",
     "named": true,
     "fields": {}
@@ -629,10 +634,6 @@
   },
   {
     "type": "kbd_content",
-    "named": true
-  },
-  {
-    "type": "list_item_mark",
     "named": true
   },
   {

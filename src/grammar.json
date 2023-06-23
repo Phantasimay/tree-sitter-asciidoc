@@ -454,12 +454,50 @@
       ]
     },
     "list_item_mark": {
-      "type": "PATTERN",
-      "value": "[\\*\\-\\.]"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_unordered_list_mark"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_ordered_list_mark"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_checklist_mark"
+        }
+      ]
     },
     "list_item_content": {
       "type": "PATTERN",
       "value": ".+\\n?"
+    },
+    "_unordered_list_mark": {
+      "type": "PATTERN",
+      "value": "[\\*\\-]+"
+    },
+    "_ordered_list_mark": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\\.+"
+        },
+        {
+          "type": "PATTERN",
+          "value": "0?\\d+\\."
+        },
+        {
+          "type": "PATTERN",
+          "value": "[\\w\\P{M}]\\."
+        }
+      ]
+    },
+    "_checklist_mark": {
+      "type": "PATTERN",
+      "value": "\\* \\[[\\* x]\\]"
     },
     "code": {
       "type": "SEQ",

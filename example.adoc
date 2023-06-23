@@ -62,3 +62,21 @@ Mark my words #automation is essential#
 
 +++aaaa+++
 
+* [*] checked
+* [x] also checked
+* [ ] not checked
+
+. item1
+. item2
+
+1. item2
+2. item3
+
+a. item1
+b. item2
+
+ε. item1
+ο. item2
+υ. item3
+ω. item4
+

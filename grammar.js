@@ -62,8 +62,16 @@ module.exports = grammar({
         // list
         list: $ => seq(repeat1($.list_item), '\n'),
         list_item: $ => seq($.list_item_mark, ' ', $.list_item_content),
-        list_item_mark: _ => /[\*\-\.]/,
+        list_item_mark: $ =>
+            choice(
+                $._unordered_list_mark,
+                $._ordered_list_mark,
+                $._checklist_mark
+            ),
         list_item_content: _ => /.+\n?/,
+        _unordered_list_mark: _ => /[\*\-]+/,
+        _ordered_list_mark: _ => choice(/\.+/, /0?\d+\./, /[\w\P{M}]\./),
+        _checklist_mark: _ => /\* \[[\* x]\]/,
         code: $ =>
             seq(
                 /\[,\s?/,
