@@ -287,6 +287,40 @@
         }
       ]
     },
+    "_url_repo": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "attr_mark"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "url-repo"
+          },
+          "named": true,
+          "value": "attr_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "attr_mark"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "urlrepo_value"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "urlrepo_value": {
+      "type": "SYMBOL",
+      "name": "url"
+    },
     "_normal_doc_attr": {
       "type": "SEQ",
       "members": [
@@ -333,6 +367,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "_url_repo"
+        },
+        {
+          "type": "SYMBOL",
           "name": "author_info"
         }
       ]
@@ -347,10 +385,6 @@
         {
           "type": "PATTERN",
           "value": "\\w+"
-        },
-        {
-          "type": "STRING",
-          "value": "url-repo"
         }
       ]
     },

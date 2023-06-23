@@ -30,6 +30,7 @@
   (url)
   (audio_url)
   (xref_url)
+  (email)
 ] @text.uri
 (emphasis) @text.emphasis
 (strong) @text.strong
@@ -58,4 +59,5 @@
   (passthrough_content)
   (audio_title)
   (attr_value)
+  (urlrepo_value)
 ] @text.literal

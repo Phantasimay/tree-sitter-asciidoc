@@ -61,6 +61,15 @@ module.exports = grammar({
                 ),
                 '\n'
             ),
+        _url_repo: $ =>
+            seq(
+                $.attr_mark,
+                alias('url-repo', $.attr_name),
+                $.attr_mark,
+                $.urlrepo_value,
+                '\n'
+            ),
+        urlrepo_value: $ => $.url,
         _normal_doc_attr: $ =>
             seq(
                 $.attr_mark,
@@ -69,9 +78,10 @@ module.exports = grammar({
                 optional($.attr_value),
                 '\n'
             ),
-        doc_attr: $ => choice($._normal_doc_attr, $._doctype, $.author_info),
+        doc_attr: $ =>
+            choice($._normal_doc_attr, $._doctype, $._url_repo, $.author_info),
         attr_mark: _ => ':',
-        attr_name: _ => choice(/\w+/, 'url-repo'),
+        attr_name: _ => choice(/\w+/),
         attr_value: _ => /.+/,
         // Admonitions
         _admonitions: $ =>
