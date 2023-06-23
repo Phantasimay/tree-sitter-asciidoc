@@ -34,12 +34,7 @@ module.exports = grammar({
                 )
             ),
         block_title: _ => seq('.', /.+\n?/),
-        title0: $ =>
-            seq(
-                /= .*\n?/,
-                optional($.author_info),
-                optional(repeat1($.doc_attr))
-            ),
+        title0: $ => seq(/= .*\n?/, repeat($.doc_attr)),
         title1: _ => /== .*\n?/,
         title2: _ => /=== .*\n?/,
         title3: _ => /==== .*\n?/,
@@ -55,7 +50,18 @@ module.exports = grammar({
             ),
         name: _ => /\w+\.?/,
         email: _ => /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/,
-        doc_attr: $ =>
+        _doctype: $ =>
+            seq(
+                $.attr_mark,
+                alias('doctype', $.attr_name),
+                $.attr_mark,
+                alias(
+                    choice('article', 'book', 'manpage', 'inline'),
+                    $.attr_value
+                ),
+                '\n'
+            ),
+        _normal_doc_attr: $ =>
             seq(
                 $.attr_mark,
                 $.attr_name,
@@ -63,6 +69,7 @@ module.exports = grammar({
                 optional($.attr_value),
                 '\n'
             ),
+        doc_attr: $ => choice($._normal_doc_attr, $._doctype, $.author_info),
         attr_mark: _ => ':',
         attr_name: _ => choice(/\w+/, 'url-repo'),
         attr_value: _ => /.+/,

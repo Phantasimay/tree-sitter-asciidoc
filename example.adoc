@@ -3,6 +3,7 @@ Kismet R. Lee <kismet@asciidoctor.org>
 :description: The document's description.
 :sectanchors:
 :url-repo: https://my-git-repo.com
+:doctype: book
 
 = title1
 == title2

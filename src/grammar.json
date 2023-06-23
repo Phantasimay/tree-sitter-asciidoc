@@ -137,31 +137,11 @@
           "value": "= .*\\n?"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "author_info"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "REPEAT1",
-              "content": {
-                "type": "SYMBOL",
-                "name": "doc_attr"
-              }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "doc_attr"
+          }
         }
       ]
     },
@@ -255,7 +235,59 @@
       "type": "PATTERN",
       "value": "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*"
     },
-    "doc_attr": {
+    "_doctype": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "attr_mark"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "doctype"
+          },
+          "named": true,
+          "value": "attr_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "attr_mark"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "article"
+              },
+              {
+                "type": "STRING",
+                "value": "book"
+              },
+              {
+                "type": "STRING",
+                "value": "manpage"
+              },
+              {
+                "type": "STRING",
+                "value": "inline"
+              }
+            ]
+          },
+          "named": true,
+          "value": "attr_value"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "_normal_doc_attr": {
       "type": "SEQ",
       "members": [
         {
@@ -285,6 +317,23 @@
         {
           "type": "STRING",
           "value": "\n"
+        }
+      ]
+    },
+    "doc_attr": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_normal_doc_attr"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_doctype"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "author_info"
         }
       ]
     },

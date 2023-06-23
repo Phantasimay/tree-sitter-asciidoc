@@ -139,6 +139,10 @@
         {
           "type": "attr_value",
           "named": true
+        },
+        {
+          "type": "author_info",
+          "named": true
         }
       ]
     }
@@ -501,10 +505,6 @@
       "multiple": true,
       "required": false,
       "types": [
-        {
-          "type": "author_info",
-          "named": true
-        },
         {
           "type": "doc_attr",
           "named": true
