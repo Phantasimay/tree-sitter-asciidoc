@@ -206,12 +206,12 @@ module.exports = grammar({
         kbd: $ => seq('kbd:[', optional($.kbd_content), ']'),
         kbd_content: _ => /\w+(\+\w+)?/,
         footnote: $ => seq('footnote:[', optional($.footnote_content), ']'),
-        footnote_content: $ => /[\w._]+/,
-        links: $ => seq($.url_macro),
-        autolinks: _ => /\w+:\/\/.+/,
-        url_macro: $ => seq($.autolinks, optional(seq('[', /.+/, ']'))),
-        // http_url: _$ =>
-        //     seq(/[a-zA-z]+:\/\/[^\s]*/, optional(seq('[', /[\w.]*/, ']'))),
+        footnote_content: _ => /[\w._]+/,
+        links: $ => choice($.url_macro, $.link_macro),
+        autolinks: $ => alias(/\w+:\/\/.+/, $.url),
+        url_macro: $ =>
+            seq(alias($.autolinks, $.url), optional(seq('[', /.+/, ']'))),
+        link_macro: $ => seq('link:', alias(/\w+/, $.url), '[', /\w+/, ']'),
         xref: $ => choice($._inline_xref, $._xref),
         _inline_xref: $ =>
             seq(
