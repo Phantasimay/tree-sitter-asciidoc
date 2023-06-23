@@ -1,5 +1,6 @@
 module.exports = grammar({
     name: 'asciidoc',
+    extras: _ => [],
 
     rules: {
         document: $ => repeat($._block),
