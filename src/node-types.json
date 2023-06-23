@@ -1,15 +1,5 @@
 [
   {
-    "type": "attr_name",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "attr_value",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "audio",
     "named": true,
     "fields": {
@@ -708,6 +698,14 @@
   },
   {
     "type": "attr_mark",
+    "named": true
+  },
+  {
+    "type": "attr_name",
+    "named": true
+  },
+  {
+    "type": "attr_value",
     "named": true
   },
   {

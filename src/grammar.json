@@ -287,6 +287,45 @@
         }
       ]
     },
+    "_text_line": {
+      "type": "PATTERN",
+      "value": "[.\\'\\.]+"
+    },
+    "_doc_description": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "attr_mark"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "description"
+          },
+          "named": true,
+          "value": "attr_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "attr_mark"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": ".+"
+          },
+          "named": true,
+          "value": "attr_value"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
     "_url_repo": {
       "type": "SEQ",
       "members": [
@@ -321,7 +360,7 @@
       "type": "SYMBOL",
       "name": "url"
     },
-    "_normal_doc_attr": {
+    "_hide_uri_scheme": {
       "type": "SEQ",
       "members": [
         {
@@ -329,24 +368,43 @@
           "name": "attr_mark"
         },
         {
-          "type": "SYMBOL",
-          "name": "attr_name"
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "hide-uri-scheme"
+          },
+          "named": true,
+          "value": "attr_name"
         },
         {
           "type": "SYMBOL",
           "name": "attr_mark"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "attr_value"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "_sectanchors": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "attr_mark"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "sectanchors"
+          },
+          "named": true,
+          "value": "attr_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "attr_mark"
         },
         {
           "type": "STRING",
@@ -359,15 +417,23 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_normal_doc_attr"
-        },
-        {
-          "type": "SYMBOL",
           "name": "_doctype"
         },
         {
           "type": "SYMBOL",
           "name": "_url_repo"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_hide_uri_scheme"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_sectanchors"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_doc_description"
         },
         {
           "type": "SYMBOL",
@@ -384,7 +450,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "\\w+"
+          "value": "[\\w\\-]+"
         }
       ]
     },

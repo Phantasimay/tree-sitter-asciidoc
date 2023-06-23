@@ -61,6 +61,15 @@ module.exports = grammar({
                 ),
                 '\n'
             ),
+        _text_line: _ => /[.\'\.]+/,
+        _doc_description: $ =>
+            seq(
+                $.attr_mark,
+                alias('description', $.attr_name),
+                $.attr_mark,
+                alias(/.+/, $.attr_value),
+                '\n'
+            ),
         _url_repo: $ =>
             seq(
                 $.attr_mark,
@@ -70,18 +79,31 @@ module.exports = grammar({
                 '\n'
             ),
         urlrepo_value: $ => $.url,
-        _normal_doc_attr: $ =>
+        _hide_uri_scheme: $ =>
             seq(
                 $.attr_mark,
-                $.attr_name,
+                alias('hide-uri-scheme', $.attr_name),
                 $.attr_mark,
-                optional($.attr_value),
+                '\n'
+            ),
+        _sectanchors: $ =>
+            seq(
+                $.attr_mark,
+                alias('sectanchors', $.attr_name),
+                $.attr_mark,
                 '\n'
             ),
         doc_attr: $ =>
-            choice($._normal_doc_attr, $._doctype, $._url_repo, $.author_info),
+            choice(
+                $._doctype,
+                $._url_repo,
+                $._hide_uri_scheme,
+                $._sectanchors,
+                $._doc_description,
+                $.author_info
+            ),
         attr_mark: _ => ':',
-        attr_name: _ => choice(/\w+/),
+        attr_name: _ => choice(/[\w\-]+/),
         attr_value: _ => /.+/,
         // Admonitions
         _admonitions: $ =>

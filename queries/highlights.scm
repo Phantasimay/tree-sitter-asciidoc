@@ -61,3 +61,7 @@
   (attr_value)
   (urlrepo_value)
 ] @text.literal
+
+[
+  (monospace)
+] @nospell

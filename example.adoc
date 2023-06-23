@@ -4,6 +4,7 @@ Kismet R. Lee <kismet@asciidoctor.org>
 :sectanchors:
 :url-repo: https://my-git-repo.com
 :doctype: book
+:hide-uri-scheme:
 
 = title1
 == title2
