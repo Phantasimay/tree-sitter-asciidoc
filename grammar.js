@@ -222,9 +222,9 @@ module.exports = grammar({
         footnote: $ => seq('footnote:[', optional($.footnote_content), ']'),
         footnote_content: _ => /[\w._]+/,
         links: $ => choice($.url_macro, $.link_macro, $.mailto),
-        autolinks: $ => alias(/\w+:\/\/.+/, $.url),
+        autolinks: $ => alias(/\w+:\/\/[^\[]+/, $.url),
         url_macro: $ =>
-            seq(alias($.autolinks, $.url), optional(seq('[', /[^\]]+/, ']'))),
+            seq($.autolinks, '[', alias(/[\w+]+/, $.url_title), ']'),
         link_macro: $ =>
             seq('link:', alias(/[^\[]+/, $.url), '[', /[^\]]+/, ']'),
         mailto: $ =>

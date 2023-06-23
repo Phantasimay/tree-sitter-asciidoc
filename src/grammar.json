@@ -1309,7 +1309,7 @@
       "type": "ALIAS",
       "content": {
         "type": "PATTERN",
-        "value": "\\w+:\\/\\/.+"
+        "value": "\\w+:\\/\\/[^\\[]+"
       },
       "named": true,
       "value": "url"
@@ -1318,38 +1318,25 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "autolinks"
-          },
-          "named": true,
-          "value": "url"
+          "type": "SYMBOL",
+          "name": "autolinks"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "["
-                },
-                {
-                  "type": "PATTERN",
-                  "value": "[^\\]]+"
-                },
-                {
-                  "type": "STRING",
-                  "value": "]"
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[\\w+]+"
+          },
+          "named": true,
+          "value": "url_title"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
         }
       ]
     },
