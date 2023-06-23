@@ -2,6 +2,7 @@
 == title2
 === title3
 NOTE: xxx
+.haha
 [NOTE]
 ----
 hello

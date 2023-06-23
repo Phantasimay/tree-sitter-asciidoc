@@ -33,39 +33,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_admonitions"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "list"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "code"
-        },
-        {
-          "type": "SYMBOL",
           "name": "comment"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "image"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "table"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "description_list"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "audio"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "video"
         },
         {
           "type": "SYMBOL",
@@ -78,6 +46,82 @@
         {
           "type": "SYMBOL",
           "name": "page_breaks"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_titled_block"
+        }
+      ]
+    },
+    "_titled_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "block_title"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_admonitions"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "list"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "image"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "code"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "audio"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "video"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "description_list"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "table"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "block_title": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "PATTERN",
+          "value": ".+\\n?"
         }
       ]
     },

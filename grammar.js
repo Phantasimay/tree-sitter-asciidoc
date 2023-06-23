@@ -10,19 +10,29 @@ module.exports = grammar({
                 $.title3,
                 $.title4,
                 $.title5,
-                $._admonitions,
-                $.list,
-                $.code,
                 $.comment,
-                $.image,
-                $.table,
-                $.description_list,
-                $.audio,
-                $.video,
                 $.paragraph,
                 $.line_breaks,
-                $.page_breaks
+                $.page_breaks,
+                $._titled_block
             ),
+        _titled_block: $ =>
+            seq(
+                seq(
+                    optional($.block_title),
+                    choice(
+                        $._admonitions,
+                        $.list,
+                        $.image,
+                        $.code,
+                        $.audio,
+                        $.video,
+                        $.description_list,
+                        $.table
+                    )
+                )
+            ),
+        block_title: _ => seq('.', /.+\n?/),
         title1: _ => /= .*\n?/,
         title2: _ => /== .*\n?/,
         title3: _ => /=== .*\n?/,
@@ -131,7 +141,13 @@ module.exports = grammar({
                 '>>'
             ),
         _xref: $ =>
-            seq('xref:', field('url', $.xref_url), '[', field('title', $.audio_title), ']'),
+            seq(
+                'xref:',
+                field('url', $.xref_url),
+                '[',
+                field('title', $.audio_title),
+                ']'
+            ),
         xref_url: _ => /\w+/,
         emphasis: _$ => /_.+_/,
         strong: _$ => /\*.+\*/,

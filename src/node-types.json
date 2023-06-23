@@ -36,6 +36,11 @@
     "fields": {}
   },
   {
+    "type": "block_title",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "caution",
     "named": true,
     "fields": {}
@@ -96,6 +101,10 @@
       "types": [
         {
           "type": "audio",
+          "named": true
+        },
+        {
+          "type": "block_title",
           "named": true
         },
         {
@@ -512,6 +521,10 @@
   },
   {
     "type": "----\n",
+    "named": false
+  },
+  {
+    "type": ".",
     "named": false
   },
   {
