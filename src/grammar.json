@@ -1282,6 +1282,10 @@
         {
           "type": "SYMBOL",
           "name": "link_macro"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "mailto"
         }
       ]
     },
@@ -1318,7 +1322,7 @@
                 },
                 {
                   "type": "PATTERN",
-                  "value": ".+"
+                  "value": "[^\\]]+"
                 },
                 {
                   "type": "STRING",
@@ -1344,7 +1348,7 @@
           "type": "ALIAS",
           "content": {
             "type": "PATTERN",
-            "value": "\\w+"
+            "value": "[^\\[]+"
           },
           "named": true,
           "value": "url"
@@ -1355,7 +1359,45 @@
         },
         {
           "type": "PATTERN",
-          "value": "\\w+"
+          "value": "[^\\]]+"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "mailto": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "mailto:"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[\\w\\.]+@[\\w\\.]+"
+          },
+          "named": true,
+          "value": "url"
+        },
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[^\\]]+"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",

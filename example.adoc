@@ -36,6 +36,8 @@ https://www.xxx.com[iaaa]
 
 link:uuuuuri[tttt]
 
+mailto:join@discuss.example.org[Subscribe]
+
 footnote:[xxxx]
 
 kbd:[Ctrl+K]

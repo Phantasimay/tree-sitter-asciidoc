@@ -353,6 +353,10 @@
           "named": true
         },
         {
+          "type": "mailto",
+          "named": true
+        },
+        {
           "type": "url_macro",
           "named": true
         }
@@ -402,6 +406,21 @@
     "type": "list_item_mark",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "mailto",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "url",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "note",
@@ -805,6 +824,10 @@
   },
   {
     "type": "link:",
+    "named": false
+  },
+  {
+    "type": "mailto:",
     "named": false
   },
   {
