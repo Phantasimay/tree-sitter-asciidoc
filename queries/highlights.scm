@@ -10,6 +10,8 @@
   (list_item_mark)
   (table_start)
   (table_end)
+  (attr_mark)
+  (attr_name)
 ]@punctuation.special
 
 (comment) @comment
@@ -54,4 +56,5 @@
   (footnote_content)
   (passthrough_content)
   (audio_title)
+  (attr_value)
 ] @text.literal

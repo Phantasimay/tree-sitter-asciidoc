@@ -1,3 +1,9 @@
+= Document Title
+Kismet R. Lee <kismet@asciidoctor.org>
+:description: The document's description.
+:sectanchors:
+:url-repo: https://my-git-repo.com
+
 = title1
 == title2
 === title3

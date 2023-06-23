@@ -33,11 +33,37 @@ module.exports = grammar({
                 )
             ),
         block_title: _ => seq('.', /.+\n?/),
-        title1: _ => /= .*\n?/,
+        title1: $ =>
+            seq(
+                /= .*\n?/,
+                optional($.author_info),
+                optional(repeat1($.doc_attr))
+            ),
         title2: _ => /== .*\n?/,
         title3: _ => /=== .*\n?/,
         title4: _ => /==== .*\n?/,
         title5: _ => /===== .*\n?/,
+        author_info: $ =>
+            seq(
+                $.name,
+                optional($.name),
+                optional($.name),
+                optional(seq('<', $.email, '>')),
+                '\n'
+            ),
+        name: _ => /\w+\.?/,
+        email: _ => /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/,
+        doc_attr: $ =>
+            seq(
+                $.attr_mark,
+                $.attr_name,
+                $.attr_mark,
+                optional($.attr_value),
+                '\n'
+            ),
+        attr_mark: _ => ':',
+        attr_name: _ => choice(/\w+/, 'url-repo'),
+        attr_value: _ => /.+/,
         // Admonitions
         _admonitions: $ =>
             choice($.note, $.tip, $.important, $.caution, $.warning),

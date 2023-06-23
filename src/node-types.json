@@ -1,5 +1,15 @@
 [
   {
+    "type": "attr_name",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "attr_value",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "audio",
     "named": true,
     "fields": {
@@ -34,6 +44,25 @@
     "type": "audio_url",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "author_info",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "email",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "block_title",
@@ -90,6 +119,29 @@
     "type": "description_list",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "doc_attr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attr_mark",
+          "named": true
+        },
+        {
+          "type": "attr_name",
+          "named": true
+        },
+        {
+          "type": "attr_value",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "document",
@@ -438,6 +490,25 @@
     "fields": {}
   },
   {
+    "type": "title1",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "author_info",
+          "named": true
+        },
+        {
+          "type": "doc_attr",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "url",
     "named": true,
     "fields": {}
@@ -541,11 +612,19 @@
     "named": false
   },
   {
+    "type": "<",
+    "named": false
+  },
+  {
     "type": "<<",
     "named": false
   },
   {
     "type": "<<<\n\n",
+    "named": false
+  },
+  {
+    "type": ">",
     "named": false
   },
   {
@@ -605,8 +684,16 @@
     "named": false
   },
   {
+    "type": "attr_mark",
+    "named": true
+  },
+  {
     "type": "audio::",
     "named": false
+  },
+  {
+    "type": "email",
+    "named": true
   },
   {
     "type": "emphasis",
@@ -641,6 +728,10 @@
     "named": true
   },
   {
+    "type": "name",
+    "named": true
+  },
+  {
     "type": "pass:[",
     "named": false
   },
@@ -654,10 +745,6 @@
   },
   {
     "type": "superscript",
-    "named": true
-  },
-  {
-    "type": "title1",
     "named": true
   },
   {
@@ -675,6 +762,10 @@
   {
     "type": "title5",
     "named": true
+  },
+  {
+    "type": "url-repo",
+    "named": false
   },
   {
     "type": "video::",
