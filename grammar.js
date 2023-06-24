@@ -175,11 +175,19 @@ module.exports = grammar({
                 field('title', $.audio_title),
                 ']\n'
             ),
-        table: $ => seq($.table_start, optional($.table_content), $.table_end),
+        table: $ =>
+            seq($.table_start, optional($.table_content), $.table_end, '\n'),
         table_start: _ => '|===\n',
         table_content: _ => repeat1(/.+\n?/),
         table_end: _ => '|===\n',
-        description_list: _$ => seq(/\w+/, ':: ', /.+/, '\n'),
+        description_list: $ => seq(repeat1($.description_list_item), '\n'),
+        description_list_item: $ =>
+            seq(
+                alias(/\w+/, $.list_item_name),
+                ':: ',
+                alias(/.+/, $.list_item_content),
+                '\n'
+            ),
         audio: $ =>
             seq(
                 'audio::',

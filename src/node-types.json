@@ -123,7 +123,36 @@
   {
     "type": "description_list",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "description_list_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "description_list_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "list_item_content",
+          "named": true
+        },
+        {
+          "type": "list_item_name",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "doc_attr",
@@ -818,6 +847,10 @@
   {
     "type": "link:",
     "named": false
+  },
+  {
+    "type": "list_item_name",
+    "named": true
   },
   {
     "type": "mailto:",
