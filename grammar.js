@@ -226,7 +226,13 @@ module.exports = grammar({
         url_macro: $ =>
             seq($.autolinks, '[', alias(/[\w+]+/, $.url_title), ']'),
         link_macro: $ =>
-            seq('link:', alias(/[^\[]+/, $.url), '[', /[^\]]+/, ']'),
+            seq(
+                'link:',
+                alias(/[^\[]+/, $.url),
+                '[',
+                alias(/[^\]]+/, $.url_title),
+                ']'
+            ),
         mailto: $ =>
             seq(
                 'mailto:',

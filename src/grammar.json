@@ -1361,8 +1361,13 @@
           "value": "["
         },
         {
-          "type": "PATTERN",
-          "value": "[^\\]]+"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[^\\]]+"
+          },
+          "named": true,
+          "value": "url_title"
         },
         {
           "type": "STRING",
