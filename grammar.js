@@ -41,7 +41,7 @@ module.exports = grammar({
                 ' ',
                 alias(/.*\n?/, $.title_content),
                 repeat($.doc_attr),
-                /\n?/
+                /\n/
             ),
         // prettier-ignore
         title1: $ => seq(alias('==', $.title_marker), ' ', alias(/.*\n?/, $.title_content)),
@@ -154,14 +154,20 @@ module.exports = grammar({
             seq('[WARNING]\n', '----\n', repeat(/.+\n/), '----\n'),
         // list
         list: $ => seq(repeat1($.list_item), '\n'),
-        list_item: $ => seq($.list_item_mark, ' ', $.list_item_content),
-        list_item_mark: $ =>
-            choice(
-                $._unordered_list_mark,
-                $._ordered_list_mark,
-                $._checklist_mark
+        list_item: $ =>
+            seq(
+                alias(
+                    choice(
+                        $._unordered_list_mark,
+                        $._ordered_list_mark,
+                        $._checklist_mark
+                    ),
+                    $.list_item_mark
+                ),
+                ' ',
+                alias(/.+/, $.list_item_content),
+                /\n/
             ),
-        list_item_content: _ => /.+\n?/,
         _unordered_list_mark: _ => /[\*\-]+/,
         _ordered_list_mark: _ => choice(/\.+/, /0?\d+\./, /[\w\P{M}]\./),
         _checklist_mark: _ => /\* \[[\* x]\]/,

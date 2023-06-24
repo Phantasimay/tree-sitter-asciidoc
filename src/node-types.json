@@ -431,11 +431,6 @@
     }
   },
   {
-    "type": "list_item_content",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "list_item_mark",
     "named": true,
     "fields": {}
@@ -950,6 +945,10 @@
   {
     "type": "link:",
     "named": false
+  },
+  {
+    "type": "list_item_content",
+    "named": true
   },
   {
     "type": "list_item_name",

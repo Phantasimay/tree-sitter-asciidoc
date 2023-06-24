@@ -19,7 +19,6 @@ TIP: tips
 IMPORTANT: important things
 CAUTION: caution
 WARNING: warning
-
 - item1
 - item2
 
@@ -55,7 +54,6 @@ xref:xxxx[title]
 title:: content
 
 audio::videofile.mp4[tite]
-
 video::videofile.mp4[title]
 
 Happy werewolves are *really* `slobbery`
