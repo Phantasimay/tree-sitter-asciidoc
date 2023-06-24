@@ -133,8 +133,26 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "= .*\\n?"
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "="
+          },
+          "named": true,
+          "value": "title_marker"
+        },
+        {
+          "type": "STRING",
+          "value": " "
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": ".*\\n?"
+          },
+          "named": true,
+          "value": "title_content"
         },
         {
           "type": "REPEAT",
@@ -142,28 +160,147 @@
             "type": "SYMBOL",
             "name": "doc_attr"
           }
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\n?"
         }
       ]
     },
     "title1": {
-      "type": "PATTERN",
-      "value": "== .*\\n?"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "=="
+          },
+          "named": true,
+          "value": "title_marker"
+        },
+        {
+          "type": "STRING",
+          "value": " "
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": ".*\\n?"
+          },
+          "named": true,
+          "value": "title_content"
+        }
+      ]
     },
     "title2": {
-      "type": "PATTERN",
-      "value": "=== .*\\n?"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "==="
+          },
+          "named": true,
+          "value": "title_marker"
+        },
+        {
+          "type": "STRING",
+          "value": " "
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": ".*\\n?"
+          },
+          "named": true,
+          "value": "title_content"
+        }
+      ]
     },
     "title3": {
-      "type": "PATTERN",
-      "value": "==== .*\\n?"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "===="
+          },
+          "named": true,
+          "value": "title_marker"
+        },
+        {
+          "type": "STRING",
+          "value": " "
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": ".*\\n?"
+          },
+          "named": true,
+          "value": "title_content"
+        }
+      ]
     },
     "title4": {
-      "type": "PATTERN",
-      "value": "===== .*\\n?"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "====="
+          },
+          "named": true,
+          "value": "title_marker"
+        },
+        {
+          "type": "STRING",
+          "value": " "
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": ".*\\n?"
+          },
+          "named": true,
+          "value": "title_content"
+        }
+      ]
     },
     "title5": {
-      "type": "PATTERN",
-      "value": "====== .*\\n?"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "======"
+          },
+          "named": true,
+          "value": "title_marker"
+        },
+        {
+          "type": "STRING",
+          "value": " "
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": ".*\\n?"
+          },
+          "named": true,
+          "value": "title_content"
+        }
+      ]
     },
     "author_info": {
       "type": "SEQ",
@@ -1257,6 +1394,10 @@
         {
           "type": "PATTERN",
           "value": "\\w+"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\s"
         }
       ]
     },
@@ -1339,7 +1480,7 @@
       "type": "ALIAS",
       "content": {
         "type": "PATTERN",
-        "value": "\\w+:\\/\\/[^\\[]+"
+        "value": "\\w+:\\/\\/[^\\[\\n]+"
       },
       "named": true,
       "value": "url"

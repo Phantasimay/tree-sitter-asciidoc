@@ -598,10 +598,113 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "doc_attr",
+          "named": true
+        },
+        {
+          "type": "title_content",
+          "named": true
+        },
+        {
+          "type": "title_marker",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "title1",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "title_content",
+          "named": true
+        },
+        {
+          "type": "title_marker",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "title2",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "title_content",
+          "named": true
+        },
+        {
+          "type": "title_marker",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "title3",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "title_content",
+          "named": true
+        },
+        {
+          "type": "title_marker",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "title4",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "title_content",
+          "named": true
+        },
+        {
+          "type": "title_marker",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "title5",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "title_content",
+          "named": true
+        },
+        {
+          "type": "title_marker",
           "named": true
         }
       ]
@@ -881,23 +984,11 @@
     "named": true
   },
   {
-    "type": "title1",
+    "type": "title_content",
     "named": true
   },
   {
-    "type": "title2",
-    "named": true
-  },
-  {
-    "type": "title3",
-    "named": true
-  },
-  {
-    "type": "title4",
-    "named": true
-  },
-  {
-    "type": "title5",
+    "type": "title_marker",
     "named": true
   },
   {

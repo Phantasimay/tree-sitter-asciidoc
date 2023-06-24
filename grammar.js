@@ -35,12 +35,24 @@ module.exports = grammar({
                 )
             ),
         block_title: _ => seq('.', /.+\n?/),
-        title0: $ => seq(/= .*\n?/, repeat($.doc_attr)),
-        title1: _ => /== .*\n?/,
-        title2: _ => /=== .*\n?/,
-        title3: _ => /==== .*\n?/,
-        title4: _ => /===== .*\n?/,
-        title5: _ => /====== .*\n?/,
+        title0: $ =>
+            seq(
+                alias('=', $.title_marker),
+                ' ',
+                alias(/.*\n?/, $.title_content),
+                repeat($.doc_attr),
+                /\n?/
+            ),
+        // prettier-ignore
+        title1: $ => seq(alias('==', $.title_marker), ' ', alias(/.*\n?/, $.title_content)),
+        // prettier-ignore
+        title2: $ => seq(alias('===', $.title_marker), ' ', alias(/.*\n?/, $.title_content)),
+        // prettier-ignore
+        title3: $ => seq(alias('====', $.title_marker), ' ', alias(/.*\n?/, $.title_content)),
+        // prettier-ignore
+        title4: $ => seq(alias('=====', $.title_marker), ' ', alias(/.*\n?/, $.title_content)),
+        // prettier-ignore
+        title5: $ => seq(alias('======', $.title_marker), ' ', alias(/.*\n?/, $.title_content)),
         author_info: $ =>
             seq(
                 $.name,
@@ -223,14 +235,15 @@ module.exports = grammar({
                 $.links,
                 $.xref,
                 $.highlight,
-                /\w+/
+                /\w+/,
+                /\s/
             ),
         kbd: $ => seq('kbd:[', optional($.kbd_content), ']'),
         kbd_content: _ => /\w+(\+\w+)?/,
         footnote: $ => seq('footnote:[', optional($.footnote_content), ']'),
         footnote_content: _ => /[\w._]+/,
         links: $ => choice($.url_macro, $.link_macro, $.mailto),
-        autolinks: $ => alias(/\w+:\/\/[^\[]+/, $.url),
+        autolinks: $ => alias(/\w+:\/\/[^\[\n]+/, $.url),
         url_macro: $ =>
             seq($.autolinks, '[', alias(/[\w+]+/, $.url_title), ']'),
         link_macro: $ =>

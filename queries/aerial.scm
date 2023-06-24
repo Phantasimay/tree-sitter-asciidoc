@@ -1,15 +1,25 @@
 (title0
+  (title_marker) @level
+  (title_content) @name
   (#set! "kind" "Interface")
-  ) @name @type
+) @type
 (title1
+  (title_marker) @level
+  (title_content) @name
   (#set! "kind" "Interface")
-  ) @name @type
+) @type
 (title2
+  (title_marker) @level
+  (title_content) @name
   (#set! "kind" "Interface")
-  ) @name @type
+) @type
 (title3
+  (title_marker) @level
+  (title_content) @name
   (#set! "kind" "Interface")
-  ) @name @type
+) @type
 (title4
+  (title_marker) @level
+  (title_content) @name
   (#set! "kind" "Interface")
-  ) @name @type
+) @type
