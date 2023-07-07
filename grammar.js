@@ -60,19 +60,6 @@ module.exports = grammar({
         title4: $ => seq(alias('=====', $.title_marker), ' ', alias(/.*\n?/, $.title_content)),
         // prettier-ignore
         title5: $ => seq(alias('======', $.title_marker), ' ', alias(/.*\n?/, $.title_content)),
-        author_info: $ =>
-            seq(
-                $.name,
-                ' ',
-                optional($.name),
-                ' ',
-                optional($.name),
-                ' ',
-                optional(seq('<', $.email, '>')),
-                '\n'
-            ),
-        name: _ => /\w+\.?/,
-        email: _ => /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/,
         _doctype: $ =>
             seq(
                 $.attr_mark,
@@ -142,8 +129,7 @@ module.exports = grammar({
                 $._sectanchors,
                 $._doc_description,
                 $._link_with_underscores,
-                $._page_layout,
-                $.author_info
+                $._page_layout
             ),
         attr_mark: _ => ':',
         attr_name: _ => choice(/[\w\-]+/),
@@ -268,7 +254,7 @@ module.exports = grammar({
         links: $ => choice($.url_macro, $.link_macro, $.mailto),
         autolinks: $ => alias(/\w+:\/\/[^\[\n]+/, $.url),
         url_macro: $ =>
-            seq($.autolinks, '[', alias(/[\w+]+/, $.url_title), ']'),
+            seq($.autolinks, '[', alias(/[^\]]+/, $.url_title), ']'),
         link_macro: $ =>
             seq(
                 'link:',

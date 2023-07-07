@@ -302,88 +302,6 @@
         }
       ]
     },
-    "author_info": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "name"
-        },
-        {
-          "type": "STRING",
-          "value": " "
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "name"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": " "
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "name"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": " "
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "<"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "email"
-                },
-                {
-                  "type": "STRING",
-                  "value": ">"
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": "\n"
-        }
-      ]
-    },
-    "name": {
-      "type": "PATTERN",
-      "value": "\\w+\\.?"
-    },
-    "email": {
-      "type": "PATTERN",
-      "value": "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*"
-    },
     "_doctype": {
       "type": "SEQ",
       "members": [
@@ -677,10 +595,6 @@
         {
           "type": "SYMBOL",
           "name": "_page_layout"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "author_info"
         }
       ]
     },
@@ -1562,7 +1476,7 @@
           "type": "ALIAS",
           "content": {
             "type": "PATTERN",
-            "value": "[\\w+]+"
+            "value": "[^\\]]+"
           },
           "named": true,
           "value": "url_title"

@@ -36,25 +36,6 @@
     "fields": {}
   },
   {
-    "type": "author_info",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "email",
-          "named": true
-        },
-        {
-          "type": "name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "autolinks",
     "named": true,
     "fields": {},
@@ -172,10 +153,6 @@
         },
         {
           "type": "attr_value",
-          "named": true
-        },
-        {
-          "type": "author_info",
           "named": true
         },
         {
@@ -823,19 +800,11 @@
     "named": false
   },
   {
-    "type": "<",
-    "named": false
-  },
-  {
     "type": "<<",
     "named": false
   },
   {
     "type": "<<<\n\n",
-    "named": false
-  },
-  {
-    "type": ">",
     "named": false
   },
   {
@@ -911,10 +880,6 @@
     "named": false
   },
   {
-    "type": "email",
-    "named": true
-  },
-  {
     "type": "emphasis",
     "named": true
   },
@@ -960,10 +925,6 @@
   },
   {
     "type": "monospace",
-    "named": true
-  },
-  {
-    "type": "name",
     "named": true
   },
   {
