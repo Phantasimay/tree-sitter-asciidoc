@@ -85,6 +85,15 @@ module.exports = grammar({
                 ),
                 '\n'
             ),
+        _page_layout: $ =>
+            seq(
+                $.attr_mark,
+                alias('page-layout', $.attr_name),
+                $.attr_mark,
+                ' ',
+                alias(choice('docs', 'landscape', 'portrait'), $.attr_value),
+                '\n'
+            ),
         _text_line: _ => /[.\'\.]+/,
         _doc_description: $ =>
             seq(
@@ -133,6 +142,7 @@ module.exports = grammar({
                 $._sectanchors,
                 $._doc_description,
                 $._link_with_underscores,
+                $._page_layout,
                 $.author_info
             ),
         attr_mark: _ => ':',
