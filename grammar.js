@@ -1,3 +1,10 @@
+const PUNCTUATION_CHARACTERS_REGEX = '!-/:-@\\[-`\\{-~'
+// prettier-ignore
+const PUNCTUATION_CHARACTERS_ARRAY = [
+    '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<',
+    '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'
+];
+
 module.exports = grammar({
     name: 'asciidoc',
     extras: _ => [],
@@ -241,7 +248,7 @@ module.exports = grammar({
                 $.links,
                 $.xref,
                 $.highlight,
-                /\w+/,
+                $._word,
                 /\s/
             ),
         kbd: $ => seq('kbd:[', optional($.kbd_content), ']'),
@@ -295,6 +302,9 @@ module.exports = grammar({
         _passthrough_plus: $ => seq('+++', $.passthrough_content, '+++'),
         _passthrough_cmd: $ => seq('pass:[', $.passthrough_content, ']'),
         passthrough_content: _ => /\w+/,
+        _word: _ =>
+            new RegExp('[^' + PUNCTUATION_CHARACTERS_REGEX + ' \\t\\n\\r]+'),
+        _line: $ => prec.right(repeat1($._word)),
         replacement: _ =>
             choice(
                 '{blank}',

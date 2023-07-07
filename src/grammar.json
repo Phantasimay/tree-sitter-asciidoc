@@ -1398,8 +1398,8 @@
           "name": "highlight"
         },
         {
-          "type": "PATTERN",
-          "value": "\\w+"
+          "type": "SYMBOL",
+          "name": "_word"
         },
         {
           "type": "PATTERN",
@@ -1760,6 +1760,21 @@
     "passthrough_content": {
       "type": "PATTERN",
       "value": "\\w+"
+    },
+    "_word": {
+      "type": "PATTERN",
+      "value": "[^!-/:-@\\[-`\\{-~ \\t\\n\\r]+"
+    },
+    "_line": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "REPEAT1",
+        "content": {
+          "type": "SYMBOL",
+          "name": "_word"
+        }
+      }
     },
     "replacement": {
       "type": "CHOICE",
