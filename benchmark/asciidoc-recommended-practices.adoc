@@ -1,6 +1,4 @@
 = AsciiDoc Recommended Practices
-Dan Allen
-v1.0-HEAD, 2016-12-21
 :description: This document catalogs a set of recommended practices for composing documents in AsciiDoc.
 :page-layout: docs
 
@@ -26,6 +24,7 @@ It also reads as "`a doc`".
 Our recommendation, therefore, is to use `.adoc`.
 
 NOTE: We strongly recommend _against_ using the `.asc` extension.
+
 The connection to AsciiDoc isn't immediately obvious and it gets falsely identified as a PGP file on Linux.
 
 == One Sentence Per Line

@@ -1,3 +1,7 @@
+const common = require('./common/grammar.js')
+
+const PRECEDENCE_LEVEL_LINK = common.PRECEDENCE_LEVEL_LINK
+
 const PUNCTUATION_CHARACTERS_REGEX = '!-/:-@\\[-`\\{-~'
 // prettier-ignore
 const PUNCTUATION_CHARACTERS_ARRAY = [
@@ -23,7 +27,7 @@ module.exports = grammar({
                 $.paragraph,
                 $.line_breaks,
                 $.page_breaks,
-                $._titled_block
+                $._titled_block,
             ),
         _titled_block: $ =>
             seq(
@@ -37,9 +41,9 @@ module.exports = grammar({
                         $.audio,
                         $.video,
                         $.description_list,
-                        $.table
-                    )
-                )
+                        $.table,
+                    ),
+                ),
             ),
         block_title: _ => seq('.', /.+\n?/),
         title0: $ =>
@@ -48,7 +52,7 @@ module.exports = grammar({
                 ' ',
                 alias(/.*\n?/, $.title_content),
                 repeat($.doc_attr),
-                /\n/
+                /\n/,
             ),
         // prettier-ignore
         title1: $ => seq(alias('==', $.title_marker), ' ', alias(/.*\n?/, $.title_content)),
@@ -68,9 +72,9 @@ module.exports = grammar({
                 ' ',
                 alias(
                     choice('article', 'book', 'manpage', 'inline'),
-                    $.attr_value
+                    $.attr_value,
                 ),
-                '\n'
+                '\n',
             ),
         _page_layout: $ =>
             seq(
@@ -79,7 +83,7 @@ module.exports = grammar({
                 $.attr_mark,
                 ' ',
                 alias(choice('docs', 'landscape', 'portrait'), $.attr_value),
-                '\n'
+                '\n',
             ),
         _text_line: _ => /[.\'\.]+/,
         _doc_description: $ =>
@@ -88,7 +92,7 @@ module.exports = grammar({
                 alias('description', $.attr_name),
                 $.attr_mark,
                 alias(/.+/, $.attr_value),
-                '\n'
+                '\n',
             ),
         _url_repo: $ =>
             seq(
@@ -97,7 +101,7 @@ module.exports = grammar({
                 $.attr_mark,
                 ' ',
                 $.autolinks,
-                '\n'
+                '\n',
             ),
         _link_with_underscores: $ =>
             seq(
@@ -105,21 +109,21 @@ module.exports = grammar({
                 alias('link-with-underscores', $.attr_name),
                 $.attr_mark,
                 $.autolinks,
-                '\n'
+                '\n',
             ),
         _hide_uri_scheme: $ =>
             seq(
                 $.attr_mark,
                 alias('hide-uri-scheme', $.attr_name),
                 $.attr_mark,
-                '\n'
+                '\n',
             ),
         _sectanchors: $ =>
             seq(
                 $.attr_mark,
                 alias('sectanchors', $.attr_name),
                 $.attr_mark,
-                '\n'
+                '\n',
             ),
         doc_attr: $ =>
             choice(
@@ -129,7 +133,7 @@ module.exports = grammar({
                 $._sectanchors,
                 $._doc_description,
                 $._link_with_underscores,
-                $._page_layout
+                $._page_layout,
             ),
         attr_mark: _ => ':',
         attr_name: _ => choice(/[\w\-]+/),
@@ -163,13 +167,13 @@ module.exports = grammar({
                     choice(
                         $._unordered_list_mark,
                         $._ordered_list_mark,
-                        $._checklist_mark
+                        $._checklist_mark,
                     ),
-                    $.list_item_mark
+                    $.list_item_mark,
                 ),
                 ' ',
-                alias(/.+/, $.list_item_content),
-                /\n/
+                alias($.line, $.list_item_content),
+                /\n/,
             ),
         _unordered_list_mark: _ => /[\*\-]+/,
         _ordered_list_mark: _ => choice(/\.+/, /0?\d+\./, /[\w\P{M}]\./),
@@ -181,7 +185,7 @@ module.exports = grammar({
                 ']\n',
                 '----\n',
                 field('content', optional($.code_content)),
-                '----\n'
+                '----\n',
             ),
         code_language: _ => /\w+/,
         code_content: _ => repeat1(/.+\n/),
@@ -194,7 +198,7 @@ module.exports = grammar({
                 field('url', $.audio_url),
                 '[',
                 field('title', $.audio_title),
-                ']\n'
+                ']\n',
             ),
         table: $ =>
             seq($.table_start, optional($.table_content), $.table_end, '\n'),
@@ -207,7 +211,7 @@ module.exports = grammar({
                 alias(/\w+/, $.list_item_name),
                 ':: ',
                 alias(/.+/, $.list_item_content),
-                '\n'
+                '\n',
             ),
         audio: $ =>
             seq(
@@ -216,7 +220,7 @@ module.exports = grammar({
                 '[',
                 field('title', optional($.audio_title)),
                 ']',
-                '\n'
+                '\n',
             ),
         audio_url: _ => /[\w.]+/,
         audio_title: _ => /[\w.]+/,
@@ -227,7 +231,7 @@ module.exports = grammar({
                 '[',
                 field('title', optional($.audio_title)),
                 ']',
-                '\n'
+                '\n',
             ),
         paragraph: $ => seq(repeat1($._inline_element), '\n\n'),
         _inline_element: $ =>
@@ -244,8 +248,8 @@ module.exports = grammar({
                 $.links,
                 $.xref,
                 $.highlight,
-                $._word,
-                /\s/
+                $.line,
+                /\s/,
             ),
         kbd: $ => seq('kbd:[', optional($.kbd_content), ']'),
         kbd_content: _ => /\w+(\+\w+)?/,
@@ -261,7 +265,7 @@ module.exports = grammar({
                 alias(/[^\[]+/, $.url),
                 '[',
                 alias(/[^\]]+/, $.url_title),
-                ']'
+                ']',
             ),
         mailto: $ =>
             seq(
@@ -269,7 +273,7 @@ module.exports = grammar({
                 alias(/[\w\.]+@[\w\.]+/, $.url),
                 '[',
                 optional(/[^\]]+/),
-                ']'
+                ']',
             ),
         xref: $ => choice($._inline_xref, $._xref),
         _inline_xref: $ =>
@@ -277,7 +281,7 @@ module.exports = grammar({
                 '<<',
                 field('url', $.xref_url),
                 optional(seq(',', field('title', $.audio_title))),
-                '>>'
+                '>>',
             ),
         _xref: $ =>
             seq(
@@ -285,7 +289,7 @@ module.exports = grammar({
                 field('url', $.xref_url),
                 '[',
                 field('title', $.audio_title),
-                ']'
+                ']',
             ),
         xref_url: _ => /\w+/,
         emphasis: _$ => /_.+_/,
@@ -298,9 +302,19 @@ module.exports = grammar({
         _passthrough_plus: $ => seq('+++', $.passthrough_content, '+++'),
         _passthrough_cmd: $ => seq('pass:[', $.passthrough_content, ']'),
         passthrough_content: _ => /\w+/,
-        _word: _ =>
+        line: $ =>
+            prec.right(
+                repeat1(
+                    choice(
+                        $.word,
+                        $.whitespace,
+                        common.punctuation_without($, []),
+                    ),
+                ),
+            ),
+        word: _ =>
             new RegExp('[^' + PUNCTUATION_CHARACTERS_REGEX + ' \\t\\n\\r]+'),
-        _line: $ => prec.right(repeat1($._word)),
+        whitespace: _ => /[ \t]+/,
         replacement: _ =>
             choice(
                 '{blank}',
@@ -332,7 +346,7 @@ module.exports = grammar({
                 '{two-colons}',
                 '{two-semicolons}',
                 '{cpp}',
-                '{pp}'
+                '{pp}',
             ),
     },
 })
