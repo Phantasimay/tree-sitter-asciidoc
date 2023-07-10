@@ -1,7 +1,5 @@
 const common = require('./common/grammar.js')
 
-const PRECEDENCE_LEVEL_LINK = common.PRECEDENCE_LEVEL_LINK
-
 const PUNCTUATION_CHARACTERS_REGEX = '!-/:-@\\[-`\\{-~'
 // prettier-ignore
 const PUNCTUATION_CHARACTERS_ARRAY = [
@@ -12,6 +10,7 @@ const PUNCTUATION_CHARACTERS_ARRAY = [
 module.exports = grammar({
     name: 'asciidoc',
     extras: _ => [],
+    externals: $ => [$.eof],
 
     rules: {
         document: $ => repeat($._block),
@@ -234,6 +233,21 @@ module.exports = grammar({
                 '\n',
             ),
         paragraph: $ => seq(repeat1($._inline_element), '\n\n'),
+        line: $ =>
+            prec.right(
+                repeat1(
+                    choice(
+                        $.word,
+                        $.whitespace,
+                        common.punctuation_without($, []),
+                    ),
+                ),
+            ),
+
+        newline: _ => /\n|\r\n?/,
+        word: _ =>
+            new RegExp('[^' + PUNCTUATION_CHARACTERS_REGEX + ' \\t\\n\\r]+'),
+        whitespace: _ => /[ \t]+/,
         _inline_element: $ =>
             choice(
                 $.emphasis,
@@ -302,19 +316,6 @@ module.exports = grammar({
         _passthrough_plus: $ => seq('+++', $.passthrough_content, '+++'),
         _passthrough_cmd: $ => seq('pass:[', $.passthrough_content, ']'),
         passthrough_content: _ => /\w+/,
-        line: $ =>
-            prec.right(
-                repeat1(
-                    choice(
-                        $.word,
-                        $.whitespace,
-                        common.punctuation_without($, []),
-                    ),
-                ),
-            ),
-        word: _ =>
-            new RegExp('[^' + PUNCTUATION_CHARACTERS_REGEX + ' \\t\\n\\r]+'),
-        whitespace: _ => /[ \t]+/,
         replacement: _ =>
             choice(
                 '{blank}',
