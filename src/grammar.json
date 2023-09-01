@@ -1,0 +1,26 @@
+{
+  "name": "asciidoc",
+  "rules": {
+    "source_file": {
+      "type": "STRING",
+      "value": "hello"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "eof"
+    }
+  ],
+  "inline": [],
+  "supertypes": []
+}
+
