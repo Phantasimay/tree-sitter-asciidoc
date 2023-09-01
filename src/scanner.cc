@@ -1,5 +1,7 @@
 #include "tree_sitter/parser.h"
 
+#undef EOF
+
 extern "C" {
 void* tree_sitter_asciidoc_external_scanner_create();
 void tree_sitter_asciidoc_external_scanner_destroy(void* payload);
@@ -41,11 +43,9 @@ void tree_sitter_asciidoc_external_scanner_deserialize(
 bool tree_sitter_asciidoc_external_scanner_scan(
     void* payload, TSLexer* lexer, const bool* valid_symbols
 ) {
-    if (lexer->eof(lexer)) {
-        if (valid_symbols[TokenType::EOF]) {
-            lexer->result_symbol = TokenType::EOF;
-            return true;
-        }
+    if (valid_symbols[TokenType::EOF] && lexer->eof(lexer)) {
+        lexer->result_symbol = TokenType::EOF;
+        return true;
     }
     return false;
 }

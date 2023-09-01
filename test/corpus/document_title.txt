@@ -1,0 +1,14 @@
+================
+title
+================
+
+= Document Title
+Kismet R. Lee <kismet@asciidoctor.org>
+
+---
+
+(document
+  (document_title
+    (email)
+  )
+)
