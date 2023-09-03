@@ -2,13 +2,17 @@
 title
 ================
 
-= Document Title
+= Document Title (Level 0)
 Kismet R. Lee <kismet@asciidoctor.org>
+:description: The document's description.
 
 ---
 
 (document
   (document_title
-    (email)
+    (author_line
+      (email)
+    )
+    (doc_description)
   )
 )

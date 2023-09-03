@@ -1,5 +1,37 @@
 [
   {
+    "type": "author_line",
+    "named": true,
+    "fields": {
+      "author_email": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "email",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "doc_description",
+    "named": true,
+    "fields": {
+      "attr_marker": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "document",
     "named": true,
     "fields": {},
@@ -37,17 +69,20 @@
   {
     "type": "document_title",
     "named": true,
-    "fields": {
-      "author_email": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "email",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "author_line",
+          "named": true
+        },
+        {
+          "type": "doc_description",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -81,6 +116,10 @@
   },
   {
     "type": " ",
+    "named": false
+  },
+  {
+    "type": ":",
     "named": false
   },
   {
