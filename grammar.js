@@ -1,6 +1,7 @@
 module.exports = grammar({
     name: 'asciidoc',
     externals: $ => [$._eof],
+    extras: $ => [],
 
     rules: {
         document: $ => seq(optional($.document_title), repeat($._block)),
@@ -20,8 +21,11 @@ module.exports = grammar({
         author_line: $ =>
             seq(
                 field('first_name', /\w+/),
+                ' ',
                 optional(field('middle_name', /[\w.]+/)),
+                ' ',
                 field('last_name', /\w+/),
+                ' ',
                 '<',
                 field('author_email', $.email),
                 '>',
@@ -33,7 +37,8 @@ module.exports = grammar({
                 field('attr_marker', ':'),
                 field('attr_name', /\w+/),
                 field('attr_marker', ':'),
-                field('doc_description', /.*/),
+                ' ',
+                field('doc_description', /.*\n/),
             ),
         title1: $ => seq('==', ' ', /.*\n/),
         title2: $ => seq('===', ' ', /.*\n/),
