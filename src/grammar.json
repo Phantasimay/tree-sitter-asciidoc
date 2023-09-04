@@ -38,19 +38,6 @@
         }
       ]
     },
-    "_block_ending": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "\n"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_eof"
-        }
-      ]
-    },
     "_block_body": {
       "type": "CHOICE",
       "members": [
@@ -89,7 +76,11 @@
         },
         {
           "type": "PATTERN",
-          "value": ".*\\n"
+          "value": ".*"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline_token"
         },
         {
           "type": "CHOICE",
@@ -180,17 +171,26 @@
           "value": ">"
         },
         {
-          "type": "STRING",
-          "value": "\n"
+          "type": "SYMBOL",
+          "name": "_newline_token"
         }
       ]
     },
     "_doc_attr": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "doc_description"
+            }
+          ]
+        },
+        {
           "type": "SYMBOL",
-          "name": "doc_description"
+          "name": "_newline_token"
         }
       ]
     },
@@ -230,7 +230,7 @@
           "name": "doc_description",
           "content": {
             "type": "PATTERN",
-            "value": ".*\\n"
+            "value": ".*"
           }
         }
       ]
@@ -248,7 +248,11 @@
         },
         {
           "type": "PATTERN",
-          "value": ".*\\n"
+          "value": ".*"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline_token"
         }
       ]
     },
@@ -265,7 +269,11 @@
         },
         {
           "type": "PATTERN",
-          "value": ".*\\n"
+          "value": ".*"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline_token"
         }
       ]
     },
@@ -282,7 +290,11 @@
         },
         {
           "type": "PATTERN",
-          "value": ".*\\n"
+          "value": ".*"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline_token"
         }
       ]
     },
@@ -299,7 +311,11 @@
         },
         {
           "type": "PATTERN",
-          "value": ".*\\n"
+          "value": ".*"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline_token"
         }
       ]
     },
@@ -316,13 +332,34 @@
         },
         {
           "type": "PATTERN",
-          "value": ".*\\n"
+          "value": ".*"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline_token"
         }
       ]
     },
     "email": {
       "type": "PATTERN",
       "value": "[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*"
+    },
+    "_block_ending": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_newline_token"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_eof"
+        }
+      ]
+    },
+    "_newline_token": {
+      "type": "PATTERN",
+      "value": "\\n|\\r\\n?"
     }
   },
   "extras": [],
