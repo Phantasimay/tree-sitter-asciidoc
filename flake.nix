@@ -19,6 +19,7 @@
         devShell = pkgs.mkShell {
           buildInputs = [
             pkgs.tree-sitter
+            pkgs.graphviz
           ];
         };
       });
