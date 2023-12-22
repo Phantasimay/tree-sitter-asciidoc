@@ -4,6 +4,7 @@
 #include "tree_sitter/parser.h"
 
 enum TokenType {
+    LINE_ENDING,
     TOKEN_EOF,
     ATX_H1_MARKER,
     ATX_H2_MARKER,
@@ -68,6 +69,17 @@ static bool scan(Scanner* s, TSLexer* lexer, const bool* valid_symbols) {
     if (lexer->eof(lexer)) {
         if (valid_symbols[TOKEN_EOF]) {
             lexer->result_symbol = TOKEN_EOF;
+            return true;
+        }
+
+        return false;
+    }
+
+    if (valid_symbols[LINE_ENDING]) {
+        if (lexer->lookahead == '\r') {
+            advance(s, lexer);
+            mark_end(s, lexer);
+            lexer->result_symbol = LINE_ENDING;
             return true;
         }
 
