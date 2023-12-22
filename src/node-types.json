@@ -107,10 +107,6 @@
           "named": true
         },
         {
-          "type": "setext_heading",
-          "named": true
-        },
-        {
           "type": "thematic_break",
           "named": true
         }
@@ -465,10 +461,6 @@
           "named": true
         },
         {
-          "type": "setext_heading",
-          "named": true
-        },
-        {
           "type": "task_list_marker_checked",
           "named": true
         },
@@ -676,45 +668,7 @@
           "named": true
         },
         {
-          "type": "setext_heading",
-          "named": true
-        },
-        {
           "type": "thematic_break",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "setext_heading",
-    "named": true,
-    "fields": {
-      "heading_content": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "paragraph",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "block_continuation",
-          "named": true
-        },
-        {
-          "type": "setext_h1_underline",
-          "named": true
-        },
-        {
-          "type": "setext_h2_underline",
           "named": true
         }
       ]
@@ -931,14 +885,6 @@
   },
   {
     "type": "plus_metadata",
-    "named": true
-  },
-  {
-    "type": "setext_h1_underline",
-    "named": true
-  },
-  {
-    "type": "setext_h2_underline",
     "named": true
   },
   {

@@ -1506,24 +1506,6 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_setext_heading1"
-          },
-          "named": true,
-          "value": "setext_heading"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_setext_heading2"
-          },
-          "named": true,
-          "value": "setext_heading"
-        },
-        {
           "type": "SYMBOL",
           "name": "paragraph"
         },
@@ -2103,66 +2085,6 @@
           }
         ]
       }
-    },
-    "_setext_heading1": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "heading_content",
-          "content": {
-            "type": "SYMBOL",
-            "name": "paragraph"
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "setext_h1_underline"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_newline"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_eof"
-            }
-          ]
-        }
-      ]
-    },
-    "_setext_heading2": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "heading_content",
-          "content": {
-            "type": "SYMBOL",
-            "name": "paragraph"
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "setext_h2_underline"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_newline"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_eof"
-            }
-          ]
-        }
-      ]
     },
     "indented_code_block": {
       "type": "PREC_RIGHT",
@@ -5141,39 +5063,11 @@
   },
   "extras": [],
   "conflicts": [
-    [
-      "link_reference_definition"
-    ],
-    [
-      "link_label",
-      "_line"
-    ],
-    [
-      "link_reference_definition",
-      "_line"
-    ]
+    ["link_reference_definition"],
+    ["link_label", "_line"],
+    ["link_reference_definition", "_line"]
   ],
   "precedences": [
-    [
-      {
-        "type": "SYMBOL",
-        "name": "_setext_heading1"
-      },
-      {
-        "type": "SYMBOL",
-        "name": "_block"
-      }
-    ],
-    [
-      {
-        "type": "SYMBOL",
-        "name": "_setext_heading2"
-      },
-      {
-        "type": "SYMBOL",
-        "name": "_block"
-      }
-    ],
     [
       {
         "type": "SYMBOL",
@@ -5233,14 +5127,6 @@
     {
       "type": "SYMBOL",
       "name": "atx_h6_marker"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "setext_h1_underline"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "setext_h2_underline"
     },
     {
       "type": "SYMBOL",
@@ -5378,4 +5264,3 @@
   "inline": [],
   "supertypes": []
 }
-

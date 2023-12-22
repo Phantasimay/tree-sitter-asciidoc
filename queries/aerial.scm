@@ -3,9 +3,3 @@
   heading_content: (_) @name
   (#set! "kind" "Interface")
   ) @symbol
-
-(setext_heading
-  heading_content: (_) @name
-  (#set! "kind" "Interface")
-  [(setext_h1_underline) (setext_h2_underline)] @level
-  ) @symbol

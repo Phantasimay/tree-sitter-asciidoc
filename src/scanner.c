@@ -19,8 +19,6 @@ typedef enum {
     ATX_H4_MARKER,
     ATX_H5_MARKER,
     ATX_H6_MARKER,
-    SETEXT_H1_UNDERLINE,
-    SETEXT_H2_UNDERLINE,
     THEMATIC_BREAK,
     LIST_MARKER_MINUS,
     LIST_MARKER_PLUS,
@@ -136,8 +134,6 @@ static const bool paragraph_interrupt_symbols[] = {
     true,   // ATX_H4_MARKER,
     true,   // ATX_H5_MARKER,
     true,   // ATX_H6_MARKER,
-    true,   // SETEXT_H1_UNDERLINE,
-    true,   // SETEXT_H2_UNDERLINE,
     true,   // THEMATIC_BREAK,
     true,   // LIST_MARKER_MINUS,
     true,   // LIST_MARKER_PLUS,
@@ -599,25 +595,6 @@ static bool parse_atx_heading(Scanner *s, TSLexer *lexer, const bool *valid_symb
     return false;
 }
 
-static bool parse_setext_underline(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
-    if (valid_symbols[SETEXT_H1_UNDERLINE] &&
-        s->matched == s->open_blocks.size) {
-        mark_end(s, lexer);
-        while (lexer->lookahead == '=') {
-            advance(s, lexer);
-        }
-        while (lexer->lookahead == ' ' || lexer->lookahead == '\t') {
-            advance(s, lexer);
-        }
-        if (lexer->lookahead == '\n' || lexer->lookahead == '\r') {
-            lexer->result_symbol = SETEXT_H1_UNDERLINE;
-            mark_end(s, lexer);
-            return true;
-        }
-    }
-    return false;
-}
-
 static bool parse_plus(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
     if (s->indentation <= 3 &&
         (valid_symbols[LIST_MARKER_PLUS] ||
@@ -792,7 +769,6 @@ static bool parse_minus(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
     if (s->indentation <= 3 &&
         (valid_symbols[LIST_MARKER_MINUS] ||
          valid_symbols[LIST_MARKER_MINUS_DONT_INTERRUPT] ||
-         valid_symbols[SETEXT_H2_UNDERLINE] || valid_symbols[THEMATIC_BREAK] ||
          valid_symbols[MINUS_METADATA])) {
         mark_end(s, lexer);
         bool whitespace_after_minus = false;
@@ -831,16 +807,11 @@ static bool parse_minus(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
             minus_count >= 1 && !minus_after_whitespace && line_end &&
             s->matched ==
                 s->open_blocks
-                    .size;  // setext heading can not break lazy continuation
+                    .size;
         bool list_marker_minus = minus_count >= 1 && extra_indentation >= 1;
         bool success = false;
-        if (valid_symbols[SETEXT_H2_UNDERLINE] && underline) {
-            lexer->result_symbol = SETEXT_H2_UNDERLINE;
-            mark_end(s, lexer);
-            s->indentation = 0;
-            success = true;
-        } else if (valid_symbols[THEMATIC_BREAK] && thematic_break) {  // underline is false if list_marker_minus
-                                                                       // is true
+        if (valid_symbols[THEMATIC_BREAK] && thematic_break) {  // underline is false if list_marker_minus
+                                                                // is true
             lexer->result_symbol = THEMATIC_BREAK;
             mark_end(s, lexer);
             s->indentation = 0;
@@ -1380,9 +1351,6 @@ static bool scan(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
             case '=':
                 // A '#' could mark a atx heading
                 return parse_atx_heading(s, lexer, valid_symbols);
-            // case '=':
-            //     // A '=' could mark a setext underline
-            //     return parse_setext_underline(s, lexer, valid_symbols);
             case '+':
                 // A '+' could be a list marker
                 return parse_plus(s, lexer, valid_symbols);

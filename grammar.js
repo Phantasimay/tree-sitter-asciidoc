@@ -66,8 +66,6 @@ module.exports = grammar({
         _block: $ => choice($._block_not_section, $.section),
         _block_not_section: $ =>
             choice(
-                alias($._setext_heading1, $.setext_heading),
-                alias($._setext_heading2, $.setext_heading),
                 $.paragraph,
                 $.indented_code_block,
                 $.block_quote,
@@ -249,23 +247,6 @@ module.exports = grammar({
                     optional($._whitespace),
                     field('heading_content', alias($._line, $.inline)),
                 ),
-            ),
-
-        // A setext heading. The underlines are currently handled by the external scanner but maybe
-        // could be parsed using normal tree-sitter rules.
-        //
-        // https://github.github.com/gfm/#setext-headings
-        _setext_heading1: $ =>
-            seq(
-                field('heading_content', $.paragraph),
-                $.setext_h1_underline,
-                choice($._newline, $._eof),
-            ),
-        _setext_heading2: $ =>
-            seq(
-                field('heading_content', $.paragraph),
-                $.setext_h2_underline,
-                choice($._newline, $._eof),
             ),
 
         // An indented code block. An indented code block is made up of indented chunks and blank
@@ -850,8 +831,6 @@ module.exports = grammar({
         $.atx_h4_marker,
         $.atx_h5_marker,
         $.atx_h6_marker,
-        $.setext_h1_underline, // setext headings do not need a `$._block_close`
-        $.setext_h2_underline,
         $._thematic_break, // thematic breaks do not need a `$._block_close`
         $._list_marker_minus,
         $._list_marker_plus,
@@ -905,11 +884,7 @@ module.exports = grammar({
         $._pipe_table_start,
         $._pipe_table_line_ending,
     ],
-    precedences: $ => [
-        [$._setext_heading1, $._block],
-        [$._setext_heading2, $._block],
-        [$.indented_code_block, $._block],
-    ],
+    precedences: $ => [[$.indented_code_block, $._block]],
     conflicts: $ => [
         [$.link_reference_definition],
         [$.link_label, $._line],
