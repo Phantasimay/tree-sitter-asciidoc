@@ -4280,8 +4280,17 @@
       "type": "PREC",
       "value": 1,
       "content": {
-        "type": "STRING",
-        "value": "[x]"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "[x]"
+          },
+          {
+            "type": "STRING",
+            "value": "[*]"
+          }
+        ]
       }
     },
     "task_list_marker_unchecked": {

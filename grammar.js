@@ -677,7 +677,7 @@ module.exports = grammar({
 
         ...(common.EXTENSION_TASK_LIST
             ? {
-                  task_list_marker_checked: $ => prec(1, '[x]'),
+                  task_list_marker_checked: $ => prec(1, choice('[x]', '[*]')),
                   task_list_marker_unchecked: $ => prec(1, /\[[ \t]\]/),
               }
             : {}),
