@@ -494,7 +494,7 @@ static bool parse_star(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
     // If there was a star and at least one space after that star then this
     // could be a list marker.
     bool list_marker_star = star_count >= 1 && extra_indentation >= 1;
-    if (valid_symbols[THEMATIC_BREAK] && thematic_break && s->indentation < 4) {
+    if (valid_symbols[THEMATIC_BREAK] && thematic_break && s->indentation < 4 && star_count == 3) {
         // If a thematic break is valid then it takes precedence
         lexer->result_symbol = THEMATIC_BREAK;
         mark_end(s, lexer);
@@ -536,12 +536,15 @@ static bool parse_star(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
     return false;
 }
 
-static bool parse_thematic_break_underscore(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
+static bool parse_thematic_break_underscore(Scanner *s, const char delimiter, TSLexer *lexer, const bool *valid_symbols) {
+    if (delimiter != '_' && delimiter != '\'') {
+        return false;
+    }
     advance(s, lexer);
     mark_end(s, lexer);
     size_t underscore_count = 1;
     for (;;) {
-        if (lexer->lookahead == '_') {
+        if (lexer->lookahead == delimiter) {
             underscore_count++;
             advance(s, lexer);
         } else if (lexer->lookahead == ' ' || lexer->lookahead == '\t') {
@@ -551,7 +554,7 @@ static bool parse_thematic_break_underscore(Scanner *s, TSLexer *lexer, const bo
         }
     }
     bool line_end = lexer->lookahead == '\n' || lexer->lookahead == '\r';
-    if (underscore_count >= 3 && line_end && valid_symbols[THEMATIC_BREAK]) {
+    if (underscore_count == 3 && line_end && valid_symbols[THEMATIC_BREAK]) {
         lexer->result_symbol = THEMATIC_BREAK;
         mark_end(s, lexer);
         s->indentation = 0;
@@ -816,8 +819,8 @@ static bool parse_minus(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
                     .size;
         bool list_marker_minus = minus_count >= 1 && extra_indentation >= 1;
         bool success = false;
-        if (valid_symbols[THEMATIC_BREAK] && thematic_break) {  // underline is false if list_marker_minus
-                                                                // is true
+        if (valid_symbols[THEMATIC_BREAK] && thematic_break && minus_count == 3) {  // underline is false if list_marker_minus
+                                                                                    // is true
             lexer->result_symbol = THEMATIC_BREAK;
             mark_end(s, lexer);
             s->indentation = 0;
@@ -1349,8 +1352,10 @@ static bool scan(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
                 // A star could either mark  a list item or a thematic break.
                 // This code is similar to the code for '_' and '+'.
                 return parse_star(s, lexer, valid_symbols);
+            case '\'':
+                return parse_thematic_break_underscore(s, '\'', lexer, valid_symbols);
             case '_':
-                return parse_thematic_break_underscore(s, lexer, valid_symbols);
+                return parse_thematic_break_underscore(s, '_', lexer, valid_symbols);
             case '>':
                 // A '>' could mark the beginning of a block quote
                 return parse_block_quote(s, lexer, valid_symbols);
