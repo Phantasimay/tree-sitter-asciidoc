@@ -706,10 +706,16 @@ static bool parse_ordered_list_marker(Scanner *s, TSLexer *lexer, const bool *va
         size_t digits = 1;
         bool dont_interrupt = lexer->lookahead != '1';
         advance(s, lexer);
-        while (isdigit(lexer->lookahead)) {
+        if (isalpha(lexer->lookahead)) {
             dont_interrupt = true;
-            digits++;
             advance(s, lexer);
+            digits++;
+        } else {
+            while (isdigit(lexer->lookahead)) {
+                dont_interrupt = true;
+                digits++;
+                advance(s, lexer);
+            }
         }
         if (digits >= 1 && digits <= 9) {
             bool dot = false;
@@ -1354,16 +1360,9 @@ static bool scan(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
             case '+':
                 // A '+' could be a list marker
                 return parse_plus(s, lexer, valid_symbols);
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
+            case '0' ... '9':
+            case 'a' ... 'z':
+            case 'A' ... 'Z':
                 // A number could be a list marker (if followed by a dot or a
                 // parenthesis)
                 return parse_ordered_list_marker(s, lexer, valid_symbols);
