@@ -454,6 +454,7 @@ static bool parse_fenced_code_block(Scanner *s, const char delimiter, TSLexer *l
 }
 
 static bool parse_star(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
+    uintptr_t star_started = lexer->get_column(lexer);
     advance(s, lexer);
     mark_end(s, lexer);
     // Otherwise count the number of stars permitting whitespaces between them.
@@ -490,7 +491,7 @@ static bool parse_star(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
         dont_interrupt = s->matched == s->open_blocks.size;
     }
     // If there were at least 3 stars then this could be a thematic break
-    bool thematic_break = star_count >= 3 && line_end;
+    bool thematic_break = star_count >= 3 && line_end && star_started == 0;
     // If there was a star and at least one space after that star then this
     // could be a list marker.
     bool list_marker_star = star_count >= 1 && extra_indentation >= 1;
@@ -540,6 +541,7 @@ static bool parse_thematic_break_underscore(Scanner *s, const char delimiter, TS
     if (delimiter != '_' && delimiter != '\'') {
         return false;
     }
+    uintptr_t start_pos = lexer->get_column(lexer);
     advance(s, lexer);
     mark_end(s, lexer);
     size_t underscore_count = 1;
@@ -554,7 +556,7 @@ static bool parse_thematic_break_underscore(Scanner *s, const char delimiter, TS
         }
     }
     bool line_end = lexer->lookahead == '\n' || lexer->lookahead == '\r';
-    if (underscore_count == 3 && line_end && valid_symbols[THEMATIC_BREAK]) {
+    if (underscore_count == 3 && line_end && valid_symbols[THEMATIC_BREAK] && start_pos == 0) {
         lexer->result_symbol = THEMATIC_BREAK;
         mark_end(s, lexer);
         s->indentation = 0;
@@ -775,6 +777,7 @@ static bool parse_ordered_list_marker(Scanner *s, TSLexer *lexer, const bool *va
 }
 
 static bool parse_minus(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
+    uintptr_t star_pos = lexer->get_column(lexer);
     if (s->indentation <= 3 &&
         (valid_symbols[LIST_MARKER_MINUS] ||
          valid_symbols[LIST_MARKER_MINUS_DONT_INTERRUPT] ||
@@ -811,7 +814,7 @@ static bool parse_minus(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
             dont_interrupt = true;
         }
         dont_interrupt = dont_interrupt && s->matched == s->open_blocks.size;
-        bool thematic_break = minus_count >= 3 && line_end;
+        bool thematic_break = minus_count >= 3 && line_end && star_pos == 0;
         bool underline =
             minus_count >= 1 && !minus_after_whitespace && line_end &&
             s->matched ==
