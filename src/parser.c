@@ -20239,9 +20239,6 @@ static const TSParseActionEntry ts_parse_actions[] = {
 #ifdef __cplusplus
 extern "C" {
 #endif
-bool tree_sitter_asciidoc_external_scanner_scan(void *, TSLexer *, const bool *);
-unsigned tree_sitter_asciidoc_external_scanner_serialize(void *, char *);
-void tree_sitter_asciidoc_external_scanner_deserialize(void *, const char *, unsigned);
 
 #ifdef _WIN32
 #define extern __declspec(dllexport)
@@ -20276,9 +20273,6 @@ extern const TSLanguage *tree_sitter_asciidoc(void) {
     .external_scanner = {
       &ts_external_scanner_states[0][0],
       ts_external_scanner_symbol_map,
-      tree_sitter_asciidoc_external_scanner_scan,
-      tree_sitter_asciidoc_external_scanner_serialize,
-      tree_sitter_asciidoc_external_scanner_deserialize,
     },
     .primary_state_ids = ts_primary_state_ids,
   };
